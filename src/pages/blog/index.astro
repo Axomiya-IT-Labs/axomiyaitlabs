@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+
+const postsBySlug = new Map();
+for (const post of posts) {
+  const slug = post.slug.replace(/^(en|as)\//, '');
+  if (!postsBySlug.has(slug)) {
+    postsBySlug.set(slug, { en: null, as: null, slug });
+  }
+  const entry = postsBySlug.get(slug);
+  if (post.data.lang === 'en') entry.en = post;
+  else entry.as = post;
+}
+
+const sortedPosts = Array.from(postsBySlug.entries())
+  .sort((a, b) => new Date(b[1].en?.data.date || b[1].as?.data.date || '').getTime() - new Date(a[1].en?.data.date || a[1].as?.data.date || '').getTime());
+
+const filters = [
+  { cat: 'all', en: 'All', as: 'সকলো' },
+  { cat: 'guide', en: 'Guides', as: 'নিৰ্দেশিকা' },
+  { cat: 'tutorial', en: 'Tutorials', as: 'টিউটৰিয়েল' },
+  { cat: 'story', en: 'Community', as: 'সম্প্ৰদায়' },
+  { cat: 'news', en: 'Announcements', as: 'ঘোষণা' },
+];
+---
+
+<BaseLayout
+  title="Blog — Axomiya IT Labs"
+  description="Articles, guides and stories on AI, open source, and building technology in Assam — in Assamese and English."
+  active="blog"
+>
+  <div class="page-header">
+    <div class="wrap">
+      <div class="tag" lang-en>The Blog</div>
+      <div class="tag" lang-as>ব্লগ</div>
+      <h1 lang-en>Notes on AI, open source & building in Assam.</h1>
+      <h1 lang-as>AI, মুক্ত-উৎস আৰু অসমত নিৰ্মাণৰ ওপৰত টোকা।</h1>
+    </div>
+  </div>
+
+  <section style="padding-top:56px">
+    <div class="wrap">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;margin-bottom:36px">
+        <div class="blog-filter">
+          {
+            filters.map((f) => (
+              <button type="button" data-cat={f.cat} class={f.cat === 'all' ? 'is-active' : ''}>
+                <span lang-en>{f.en}</span>
+                <span lang-as>{f.as}</span>
+              </button>
+            ))
+          }
+        </div>
+        <div class="blog-search">
+          <span>🔍</span>
+          <input
+            type="text"
+            placeholder="Search articles…"
+            lang-en
+            data-lang-label
+            data-en-label="Search articles…"
+            data-as-label="প্ৰবন্ধ সন্ধান কৰক…"
+          />
+        </div>
+      </div>
+
+      <div class="blog-grid">
+        {
+          sortedPosts.map(([slug, { en, as }]) => {
+            const post = en || as;
+            return (
+              <a href={`/blog/${slug}`} class="blog-card reveal" data-cat={post.data.cat}>
+                <div class="thumb">
+                  <img src={post.data.image} alt="" loading="lazy" />
+                </div>
+                <div class="body">
+                  <div class="meta">
+                    <span class="cat" lang-en>{en?.data.catLabel || post.data.catLabel}</span>
+                    <span class="cat" lang-as>{as?.data.catLabel || post.data.catLabel}</span>
+                    <span lang-en>· {en?.data.readTime || post.data.readTime}</span>
+                    <span lang-as>· {as?.data.readTime || post.data.readTime}</span>
+                  </div>
+                  <h3 lang-en>{en?.data.title || post.data.title}</h3>
+                  <h3 lang-as>{as?.data.title || post.data.title}</h3>
+                  <p lang-en>{en?.data.excerpt || post.data.excerpt}</p>
+                  <p lang-as>{as?.data.excerpt || post.data.excerpt}</p>
+                  <span class="read">
+                    <span lang-en>Read article</span>
+                    <span lang-as>প্ৰবন্ধ পঢ়ক</span>
+                    <span class="arrow">→</span>
+                  </span>
+                </div>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="join-strip" id="join">
+    <div class="wrap">
+      <h2 lang-en>Want to write for us?</h2>
+      <h2 lang-as>আমাৰ বাবে লিখিব বিচাৰে নেকি?</h2>
+      <p lang-en>Contribute a tutorial, a translation, or your building-in-public story — every article is open source too.</p>
+      <p lang-as>এটা টিউটৰিয়েল, অনুবাদ, বা আপোনাৰ নিৰ্মাণৰ কাহিনী অৱদান আগবঢ়াওক — প্ৰতিটো প্ৰবন্ধও মুক্ত-উৎস।</p>
+      <div class="join-links">
+        <a href="/projects">
+          <span lang-en>🔗 See our projects</span>
+          <span lang-as>🔗 আমাৰ প্ৰকল্পসমূহ চাওক</span>
+        </a>
+        <a href="/contribute">
+          <span lang-en>✍️ Submit an Article</span>
+          <span lang-as>✍️ প্ৰবন্দ দাখিল কৰক</span>
+        </a>
+        <a href="https://t.me/AxomiyaITLabs" target="_blank" rel="noopener" class="tg">
+          <span lang-en><img src="/assets/icons/telegram.svg" alt="" width="18" height="18" /> Telegram Community</span>
+          <span lang-as><img src="/assets/icons/telegram.svg" alt="" width="18" height="18" /> টেলিগ্ৰাম সম্প্ৰদায়</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

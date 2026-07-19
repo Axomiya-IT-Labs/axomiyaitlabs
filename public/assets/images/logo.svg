@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 180" fill="none">
+
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ICON -->
+  <g transform="translate(20 20)">
+
+    <!-- Circle -->
+    <circle
+      cx="70"
+      cy="70"
+      r="62"
+      stroke="url(#brand)"
+      stroke-width="4"/>
+
+    <!-- A -->
+    <path
+      d="M70 18
+         L112 122
+         H94
+         L84 94
+         H56
+         L46 122
+         H28
+         Z"
+      fill="url(#brand)"/>
+
+    <!-- Inner cut -->
+    <polygon
+      points="70,48 58,80 82,80"
+      fill="white"/>
+
+    <!-- Circuit -->
+    <g stroke="#38BDF8"
+       stroke-width="3"
+       stroke-linecap="round">
+
+      <line x1="86" y1="44" x2="126" y2="44"/>
+      <line x1="92" y1="64" x2="142" y2="64"/>
+      <line x1="98" y1="84" x2="126" y2="84"/>
+
+    </g>
+
+    <g fill="#38BDF8">
+      <circle cx="132" cy="44" r="3"/>
+      <circle cx="148" cy="64" r="3"/>
+      <circle cx="132" cy="84" r="3"/>
+    </g>
+
+  </g>
+
+  <!-- WORDMARK -->
+
+  <text
+      x="180"
+      y="82"
+      font-family="Inter,Segoe UI,Arial,sans-serif"
+      font-size="54"
+      font-weight="900"
+      letter-spacing="-1"
+      fill="white">
+
+      AXOMIYA
+
+  </text>
+
+  <text
+      x="180"
+      y="126"
+      font-family="Inter,Segoe UI,Arial,sans-serif"
+      font-size="28"
+      font-weight="800"
+      fill="#F59E0B"
+      letter-spacing="6">
+
+      IT LABS
+
+  </text>
+
+  <text
+      x="180"
+      y="154"
+      font-family="Inter,Segoe UI,Arial,sans-serif"
+      font-size="18"
+      fill="#94A3B8">
+
+      Assam's AI &amp; Open Source Community
+
+  </text>
+
+</svg>

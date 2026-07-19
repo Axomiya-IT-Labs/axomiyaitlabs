@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  // Build a map: baseSlug -> { en, as }
+  const slugMap = new Map<string, { en: any; as: any }>();
+  for (const post of posts) {
+    const baseSlug = post.slug.replace(/^(en|as)\//, '');
+    if (!slugMap.has(baseSlug)) {
+      slugMap.set(baseSlug, { en: null, as: null });
+    }
+    const entry = slugMap.get(baseSlug)!;
+    if (post.data.lang === 'en') entry.en = post;
+    else entry.as = post;
+  }
+
+  return Array.from(slugMap.entries()).map(([slug, { en, as: asPost }]) => ({
+    params: { slug },
+    props: { enPost: en, asPost },
+  }));
+}
+
+const { enPost, asPost } = Astro.props;
+
+// Render the markdown body for each language version
+const { Content: EnContent } = enPost ? await render(enPost) : { Content: null };
+const { Content: AsContent } = asPost ? await render(asPost) : { Content: null };
+
+// Use EN post as the primary for meta/SEO; fallback to AS
+const primary = enPost || asPost;
+
+const blogJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: enPost?.data.title || primary.data.title,
+  description: enPost?.data.excerpt || primary.data.excerpt,
+  datePublished: primary.data.date,
+  inLanguage: ['en', 'as'],
+  author: {
+    '@type': 'Organization',
+    name: 'Axomiya IT Labs',
+    url: Astro.site,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Axomiya IT Labs',
+    url: Astro.site,
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `${Astro.site}blog/${Astro.params.slug}`,
+  },
+};
+---
+
+<BaseLayout
+  title={`${enPost?.data.title || primary.data.title} — Axomiya IT Labs Blog`}
+  description={enPost?.data.excerpt || primary.data.excerpt}
+  active="blog"
+  canonical={`${Astro.site}blog/${Astro.params.slug}`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(blogJsonLd)} />
+
+  <div class="page-header">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/blog" lang-en>← Back to Blog</a>
+        <a href="/blog" lang-as>← ব্লগলৈ উভতি যাওক</a>
+      </div>
+
+      {enPost && (
+        <div class="tag" lang-en>{enPost.data.catLabel}</div>
+      )}
+      {asPost && (
+        <div class="tag" lang-as>{asPost.data.catLabel}</div>
+      )}
+
+      {enPost && <h1 lang-en>{enPost.data.title}</h1>}
+      {asPost && <h1 lang-as>{asPost.data.title}</h1>}
+    </div>
+  </div>
+
+  <div class="post-header-image">
+    <img src={primary.data.image} alt={enPost?.data.title || primary.data.title} loading="lazy" />
+  </div>
+
+  <article class="wrap post">
+    <div class="post-meta">
+      {enPost && <span class="cat" lang-en>{enPost.data.catLabel}</span>}
+      {asPost && <span class="cat" lang-as>{asPost.data.catLabel}</span>}
+      {enPost && <span lang-en>{enPost.data.readTime}</span>}
+      {asPost && <span lang-as>{asPost.data.readTime}</span>}
+      <span>· {primary.data.date}</span>
+    </div>
+
+    {enPost && <p class="post-lead" lang-en>{enPost.data.excerpt}</p>}
+    {asPost && <p class="post-lead" lang-as>{asPost.data.excerpt}</p>}
+
+    {EnContent && (
+      <div class="post-content" lang-en>
+        <EnContent />
+      </div>
+    )}
+    {AsContent && (
+      <div class="post-content" lang-as>
+        <AsContent />
+      </div>
+    )}
+
+    <div class="author-row">
+      <div class="avatar"></div>
+      <div>
+        <strong lang-en>Axomiya IT Labs</strong>
+        <strong lang-as>Axomiya IT Labs</strong>
+        <span lang-en>Community-written · open source</span>
+        <span lang-as>সম্প্ৰদায়ৰ দ্বাৰা লিখিত · মুক্ত-উৎস</span>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

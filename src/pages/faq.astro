@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generalFaq } from '../data/faq';
+
+const faq = generalFaq;
+
+const faqItemsForLd = faq.map(item => ({
+  question: item.question.en,
+  answer: item.answer.en,
+}));
+---
+
+<BaseLayout
+  title="FAQ — Axomiya IT Labs"
+  description="Frequently asked questions about Axomiya IT Labs, our open-source projects, and how to get involved."
+  active="faq"
+  canonical={`${Astro.site}faq`}
+  faqItems={faqItemsForLd}
+>
+  <div class="page-header">
+    <div class="wrap">
+      <div class="tag" lang-en>FAQ</div>
+      <div class="tag" lang-as>সাধাৰণ প্ৰশ্নোত্তৰ</div>
+      <h1 lang-en>Frequently Asked Questions</h1>
+      <h1 lang-as>সঘনাই সোধা প্ৰশ্নসমূহ</h1>
+      <p class="lead" lang-en>Everything you need to know about Axomiya IT Labs, our open-source tools, and how to join us.</p>
+      <p class="lead" lang-as>অসমীয়া আই টি লেবছ, আমাৰ মুক্ত-উৎস সঁজুলিসমূহ আৰু আমাৰ সৈতে কেনেকৈ যোগ দিব পাৰি সেই বিষয়ে সকলো তথ্য।</p>
+    </div>
+  </div>
+
+  <section class="faq-section">
+    <div class="wrap">
+      <div class="faq-accordion">
+        {faq.map((item, index) => (
+          <details class="faq-item reveal" style={`--delay: ${index * 0.05}s`}>
+            <summary class="faq-summary">
+              <div class="faq-title">
+                <h3 lang-en>{item.question.en}</h3>
+                <h3 lang-as>{item.question.as}</h3>
+              </div>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="faq-content">
+              <p lang-en>{item.answer.en}</p>
+              <p lang-as>{item.answer.as}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-cta">
+    <div class="wrap">
+      <div class="cta-box">
+        <h2 lang-en>Still have questions?</h2>
+        <h2 lang-as>এতিয়াও কিবা প্ৰশ্ন আছে নেকি?</h2>
+        <p lang-en>Reach out to us on Telegram or open an issue on GitHub. Our community is happy to help you get started.</p>
+        <p lang-as>টেলিগ্ৰামত আমাৰ সৈতে যোগাযোগ কৰক বা গিটহাবত এটা ইছ্যু খোলক। আমাৰ সম্প্ৰদায়ে আপোনাক সহায় কৰিবলৈ সদায় প্ৰস্তুত।</p>
+        <div class="faq-cta-links">
+          <a href="https://t.me/AxomiyaITLabs" target="_blank" rel="noopener" class="btn btn-primary">
+            <span lang-en>Join Telegram Community</span>
+            <span lang-as>টেলিগ্ৰাম সম্প্ৰদায়ত যোগ দিয়ক</span>
+          </a>
+          <a href="https://github.com/axomiyaindie" target="_blank" rel="noopener" class="btn btn-outline">
+            <span lang-en>Open GitHub Issue</span>
+            <span lang-as>গিটহাবত ইছ্যু খোলক</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .faq-section {
+    padding: 60px 0;
+  }
+  .faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .faq-item {
+    background: var(--surface-soft, rgba(255, 255, 255, 0.03));
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+  .faq-item:hover {
+    border-color: var(--brand-primary, #6366f1);
+    background: var(--surface-hover, rgba(255, 255, 255, 0.05));
+  }
+  .faq-item[open] {
+    border-color: var(--brand-primary, #6366f1);
+    background: var(--surface-active, rgba(99, 102, 241, 0.04));
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  .faq-summary {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  .faq-summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-title h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-primary, #f8fafc);
+  }
+  .faq-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary, #94a3b8);
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .faq-item:hover .faq-icon {
+    background: var(--brand-primary, #6366f1);
+    color: #ffffff;
+  }
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+    background: var(--brand-primary, #6366f1);
+    color: #ffffff;
+  }
+  .faq-content {
+    padding: 0 24px 24px 24px;
+    color: var(--text-secondary, #cbd5e1);
+    font-size: 1rem;
+    line-height: 1.7;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    margin-top: 4px;
+    padding-top: 16px;
+  }
+  .faq-content p {
+    margin: 0;
+  }
+  .faq-cta {
+    padding: 40px 0 80px 0;
+  }
+  .cta-box {
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.05));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+  }
+  .cta-box h2 {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+  }
+  .cta-box p {
+    color: var(--text-secondary, #94a3b8);
+    margin-bottom: 24px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .faq-cta-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+</style>

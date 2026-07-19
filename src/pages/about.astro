@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const values = [
+  {
+    num: '01',
+    en: 'From Consumers to Creators',
+    as: 'উপভোক্তাৰ পৰা সৃষ্টিকৰ্তালৈ',
+    enBody: `Most people only scroll — they consume content made by others. The internet and AI can help you build, earn, and solve real problems instead. AI assistants like ChatGPT, Copilot, and open-source models make it possible for anyone to create, even without years of experience. You do not need a degree to start.`,
+    asBody: `বেছিভাগ মানুহ কেৱল স্ক্ৰল কৰে — আনৰ বনোৱা সমল উপভোগ কৰে। কিন্তু ইণ্টাৰনেট আৰু AI-এ আপোনাক নিৰ্মাণ কৰিবলৈ, উপাৰ্জন কৰিবলৈ আৰু প্ৰকৃত সমস্যা সমাধান কৰিবলৈ সহায় কৰিব পাৰে। ChatGPT, Copilot আৰু মুক্ত-উৎস মডেলৰ দৰে AI সহায়কে যিকোনো মানুহক সৃষ্টি কৰিবলৈ সক্ষম কৰি তোলে — বছৰৰ পিছত বছৰ অভিজ্ঞতা নোহোৱাকৈও। আৰম্ভ কৰিবলৈ কোনো ডিগ্ৰীৰ প্ৰয়োজন নাই।`,
+  },
+  {
+    num: '02',
+    en: 'Open Source, Powered by AI',
+    as: 'মুক্ত-উৎস, AIৰে শক্তিশালী',
+    enBody: `Everything we make is free, transparent, and community-driven — built with contributors, not just for users. AI helps us move faster: generating documentation, translating content, reviewing code, and debugging issues — so contributors can focus on what actually matters: ideas and impact.`,
+    asBody: `আমি নিৰ্মাণ কৰা সকলো বস্তু বিনামূলীয়া, স্বচ্ছ আৰু সম্প্ৰদায়-চালিত — কেৱল ব্যৱহাৰকাৰীৰ বাবে নহয়, অৱদানকাৰীৰ সৈতে মিলি নিৰ্মিত। AI আমাক দ্ৰুতভাৱে আগবাঢ়িবলৈ সহায় কৰে — নথিপত্ৰ সৃষ্টি কৰি, সমল অনুবাদ কৰি, ক'ড পৰ্যালোচনা কৰি আৰু সমস্যা সমাধান কৰি — যাতে অৱদানকাৰীয়ে প্ৰকৃততে যি গুৰুত্বপূৰ্ণ তাৰ ওপৰত মনোযোগ দিব পাৰে: ধাৰণা আৰু প্ৰভাৱ।`,
+  },
+  {
+    num: '03',
+    en: 'Assamese, by Default',
+    as: 'স্বাভাৱিকতেই অসমীয়া',
+    enBody: `Assam deserves world-class technology education in its own language. AI translation tools and language models help us build bilingual resources faster, so no one is left behind because of language. We build in Assamese first, then English — so every learner starts on equal footing.`,
+    asBody: `অসমে নিজৰ ভাষাত বিশ্বমানৰ প্ৰযুক্তি শিক্ষা পোৱাৰ অধিকাৰ আছে। AI অনুবাদ সঁজুলি আৰু ভাষা মডেলে আমাক দ্ৰুতভাৱে দ্বিভাষিক সম্পদ নিৰ্মাণ কৰাত সহায় কৰে, যাতে ভাষাৰ কাৰণে কোনো পিছপৰি নাথাকে। আমি প্ৰথমে অসমীয়াত নিৰ্মাণ কৰোঁ, তাৰ পিছত ইংৰাজীত — যাতে প্ৰতিজন শিক্ষাৰ্থী সমান ভেটিৰ পৰা আৰম্ভ কৰিব পাৰে।`,
+  },
+];
+
+const who = [
+  { en: 'Students', as: 'শিক্ষাৰ্থী' },
+  { en: 'Teachers', as: 'শিক্ষক' },
+  { en: 'Parents', as: 'অভিভাৱক' },
+  { en: 'Developers', as: 'ডেভেলপাৰ' },
+  { en: 'Professionals', as: 'পেশাদাৰ' },
+  { en: 'Freelancers', as: 'ফ্ৰীলেন্সাৰ' },
+  { en: 'Kids', as: 'শিশু' },
+  { en: 'Lifelong Learners', as: 'আজীৱন শিক্ষাৰ্থী' },
+  { en: 'Shopkeepers', as: 'দোকানদাৰ' },
+  { en: 'Business Owners', as: 'ব্যৱসায়ী' },
+  { en: 'Entrepreneurs', as: 'উদ্যোক্তা' },
+  { en: 'Homemakers', as: 'গৃহিণী' },
+];
+
+const pillars = [
+  {
+    icon: '📖',
+    en: 'Learn',
+    as: 'শিকক',
+    enBody: `Read guides, watch tutorials, and explore AI tools — all explained in plain Assamese and English. No prior knowledge needed.`,
+    asBody: `নিৰ্দেশিকা পঢ়ক, টিউটৰিয়েল চাওক, আৰু AI সঁজুলি অন্বেষণ কৰক — সহজ অসমীয়া আৰু ইংৰাজীত বুজাই দিয়া। আগতীয়া জ্ঞানৰ প্ৰয়োজন নাই।`,
+  },
+  {
+    icon: '🔨',
+    en: 'Build',
+    as: 'নিৰ্মাণ কৰক',
+    enBody: `Create real projects — websites, AI tools, automation scripts, educational platforms — with open-source code that anyone can use and improve.`,
+    asBody: `প্ৰকৃত প্ৰকল্প নিৰ্মাণ কৰক — ৱেবছাইট, AI সঁজুলি, স্বয়ংক্ৰিয় স্ক্ৰিপ্ট, শিক্ষামূলক প্লেটফৰ্ম — মুক্ত-উৎস ক'ডৰ সৈতে যিটো যিকোনো মানুহে ব্যৱহাৰ আৰু উন্নত কৰিব পাৰে।`,
+  },
+  {
+    icon: '🤝',
+    en: 'Share',
+    as: 'শ্বেয়াৰ কৰক',
+    enBody: `Contribute your knowledge, skills, and ideas back to the community. Every translation, tutorial, and line of code makes the next person's journey easier.`,
+    asBody: `আপোনাৰ জ্ঞান, দক্ষতা আৰু ধাৰণা সম্প্ৰদায়লৈ আগবঢ়াওক। প্ৰতিটো অনুবাদ, প্ৰতিটো টিউটৰিয়েল আৰু ক'ডৰ প্ৰতিটো শাৰীয়ে পৰৱৰ্তী মানুহৰ যাত্ৰা সহজ কৰি তোলে।`,
+  },
+];
+
+const missionEn = `We are here to collect precise information, make thoughtful analyses, present clear findings, add local context, and make all of it accessible to everyone in Assam — so that no one is left behind by international standards of technology and knowledge. If you want to share what you know, benefit others, and explore new fields with genuine curiosity, this is your community. Assam's first AI and open-source space — where everyone is welcome, whatever you do professionally.`;
+
+const missionAs = `আমি ইয়াত আছোঁ সঠিক তথ্য সংগ্ৰহ কৰিবলৈ, চিন্তাশীল বিশ্লেষণ কৰিবলৈ, স্পষ্ট ফলাফল উপস্থাপন কৰিবলৈ, স্থানীয় প্ৰসঙ্গ যোগ কৰিবলৈ আৰু সেই সকলোকে অসমৰ প্ৰতিজন মানুহৰ বাবে সহজলভ্য কৰিবলৈ — যাতে প্ৰযুক্তি আৰু জ্ঞানৰ আন্তৰ্জাতিক মানদণ্ডত কোনো পিছপৰি নাথাকে। যদি আপুনি আপোনাৰ জ্ঞান শ্বেয়াৰ কৰিব বিচাৰে, আনৰ উপকাৰ কৰিব বিচাৰে, আৰু সত্যিকাৰ কৌতূহলেৰে নতুন ক্ষেত্ৰ অন্বেষণ কৰিব বিচাৰে — এইটোৱেই আপোনাৰ সম্প্ৰদায়। অসমৰ প্ৰথম AI আৰু মুক্ত-উৎসৰ পৰিসৰ — য'ত সকলোকে স্বাগতম, আপুনি পেশাদাৰীভাৱে যিয়েই কৰক।`;
+
+const noteEn = `This is a free and open-source community. Please do not use this space for business promotions, paid services, or commercial advertisements. All contributions must genuinely benefit the community. For business collaborations, sponsorships, or paid opportunities, please join our Telegram community and speak directly with the admins.`;
+
+const noteAs = `এইটো এটা বিনামূলীয়া আৰু মুক্ত-উৎস সম্প্ৰদায়। অনুগ্ৰহ কৰি ব্যৱসায়িক প্ৰচাৰ, পেইড সেৱা বা বাণিজ্যিক বিজ্ঞাপনৰ বাবে এই পৰিসৰ ব্যৱহাৰ নকৰিব। সকলো অৱদানে সম্প্ৰদায়ক সত্যিকাৰভাৱে উপকৃত কৰা উচিত। ব্যৱসায়িক সহযোগিতা, প্ৰায়োজক বা পেইড সুযোগৰ বাবে আমাৰ টেলিগ্ৰাম সম্প্ৰদায়ত যোগ দিয়ক আৰু সৰাসৰি এডমিনসকলৰ সৈতে কথা পাতক।`;
+---
+
+<BaseLayout
+  title="About — Axomiya IT Labs"
+  description="Assam's first AI and open-source community — building free tools, education, and software in Assamese and English. No expertise needed, just curiosity."
+  active="about"
+>
+  <!-- ============ PAGE HEADER ============ -->
+  <div class="page-header">
+    <div class="wrap">
+      <div class="tag" lang-en>About Us</div>
+      <div class="tag" lang-as>আমাৰ বিষয়ে</div>
+      <h1 lang-en>Assam's first AI &amp; open-source community.</h1>
+      <h1 lang-as>অসমৰ প্ৰথম AI আৰু মুক্ত-উৎস সম্প্ৰদায়।</h1>
+      <p lang-en>Everyone is welcome — no matter your age, background, or technical skill. If you are curious and want to learn, build, or share, you belong here.</p>
+      <p lang-as>সকলোকে স্বাগতম — বয়স, পটভূমি বা প্ৰযুক্তিগত দক্ষতা যিয়েই নহওক। যদি আপুনি কৌতূহলী আৰু শিকিব, নিৰ্মাণ কৰিব বা শ্বেয়াৰ কৰিব বিচাৰে, আপুনি ইয়াতেই আপোনজন।</p>
+    </div>
+  </div>
+
+  <div class="about-header-image">
+    <img src="/assets/images/about-header.png" alt="Axomiya IT Labs — Assam's open-source AI community" loading="lazy" />
+  </div>
+
+  <!-- ============ MISSION ============ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="tag" lang-en>Our Mission</span>
+        <span class="tag" lang-as>আমাৰ লক্ষ্য</span>
+        <h2 lang-en>The internet is the greatest free encyclopedia humanity has ever built.</h2>
+        <h2 lang-as>ইণ্টাৰনেট হৈছে মানৱজাতিয়ে কেতিয়াও নিৰ্মাণ কৰা সৰ্বশ্ৰেষ্ঠ বিনামূলীয়া বিশ্বকোষ।</h2>
+        <p lang-en>{missionEn}</p>
+        <p lang-as>{missionAs}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEARN BUILD SHARE ============ -->
+  <section style="background: var(--surface-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="tag" lang-en>What we do</span>
+        <span class="tag" lang-as>আমি কি কৰোঁ</span>
+        <h2 lang-en>Three words. One community.</h2>
+        <h2 lang-as>তিনিটা শব্দ। এটা সম্প্ৰদায়।</h2>
+      </div>
+      <div class="values-list">
+        {
+          pillars.map((p) => (
+            <div class="value-card reveal">
+              <span class="num">{p.icon}</span>
+              <div>
+                <h3 lang-en>{p.en}</h3>
+                <h3 lang-as>{p.as}</h3>
+                <p lang-en>{p.enBody}</p>
+                <p lang-as>{p.asBody}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VALUES ============ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag" lang-en>What we believe</span>
+        <span class="tag" lang-as>আমাৰ বিশ্বাস</span>
+        <h2 lang-en>Three principles that guide everything we build.</h2>
+        <h2 lang-as>তিনিটা নীতি যিয়ে আমাৰ প্ৰতিটো নিৰ্মাণক পথ দেখুৱায়।</h2>
+      </div>
+      <div class="values-list">
+        {
+          values.map((v) => (
+            <div class="value-card reveal">
+              <span class="num">{v.num}</span>
+              <div>
+                <h3 lang-en>{v.en}</h3>
+                <h3 lang-as>{v.as}</h3>
+                <p lang-en>{v.enBody}</p>
+                <p lang-as>{v.asBody}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHO WE ARE FOR ============ -->
+  <section style="background: var(--surface-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="tag" lang-en>Who this is for</span>
+        <span class="tag" lang-as>এইটো কাৰ বাবে</span>
+        <h2 lang-en>Built for every person in Assam — and beyond.</h2>
+        <h2 lang-as>অসমৰ — আৰু তাৰ বাহিৰৰো — প্ৰতিজন মানুহৰ বাবে নিৰ্মিত।</h2>
+        <p lang-en>You do not need to be a developer. You do not need to be an expert. If you are curious, you belong here. AI removes the barriers — we just need your willingness to explore and learn.</p>
+        <p lang-as>আপুনি ডেভেলপাৰ হ'বলৈ নালাগে। আপুনি বিশেষজ্ঞ হ'বলৈ নালাগে। যদি আপুনি কৌতূহলী, আপুনি ইয়াতেই আপোনজন। AI বাধাসমূহ আঁতৰায় — আমাৰ দৰকাৰ কেৱল আপোনাৰ অন্বেষণ আৰু শিকিবলৈ ইচ্ছা।</p>
+      </div>
+      <div class="audience-cloud">
+        {
+          who.map((w) => (
+            <>
+              <span lang-en>{w.en}</span>
+              <span lang-as>{w.as}</span>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPEN SOURCE NOTE ============ -->
+  <section class="contrib-note">
+    <div class="wrap">
+      <div class="note-card">
+        <h3 lang-en>Open Source — Not Open for Business Promotions</h3>
+        <h3 lang-as>মুক্ত-উৎস — ব্যৱসায়িক প্ৰচাৰৰ বাবে নহয়</h3>
+        <p lang-en>{noteEn}</p>
+        <p lang-as>{noteAs}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JOIN STRIP ============ -->
+  <section class="join-strip" id="join">
+    <div class="wrap">
+      <h2 lang-en>Ready to explore, learn, and build?</h2>
+      <h2 lang-as>অন্বেষণ, শিকা আৰু নিৰ্মাণ কৰিবলৈ প্ৰস্তুত নেকি?</h2>
+      <p lang-en>Check out our projects, read the blog, or jump straight into the community. AI is here to help you at every step — you just need to show up.</p>
+      <p lang-as>আমাৰ প্ৰকল্পসমূহ চাওক, ব্লগ পঢ়ক, বা পোনে পোনে সম্প্ৰদায়ত যোগ দিয়ক। AI প্ৰতিটো পদক্ষেপত আপোনাক সহায় কৰিবলৈ আছে — আপুনি কেৱল আগবাঢ়িলেই হ'ল।</p>
+      <div class="join-links">
+        <a href="/projects" class="btn btn-primary">
+          <span lang-en>See our projects →</span>
+          <span lang-as>আমাৰ প্ৰকল্পসমূহ চাওক →</span>
+        </a>
+        <a href="/contribute" class="btn btn-outline">
+          <span lang-en>Start Contributing →</span>
+          <span lang-as>অৱদান আৰম্ভ কৰক →</span>
+        </a>
+        <a href="https://t.me/AxomiyaITLabs" target="_blank" rel="noopener" class="tg">
+          <span lang-en><img src="/assets/icons/telegram.svg" alt="" width="18" height="18" /> Telegram Community</span>
+          <span lang-as><img src="/assets/icons/telegram.svg" alt="" width="18" height="18" /> টেলিগ্ৰাম সম্প্ৰদায়</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,70 @@
+---
+const navItems = [
+  { href: '/about', key: 'about', en: 'About', as: 'আমাৰ বিষয়ে', hash: '' },
+  { href: '/what-we-build', key: 'build', en: 'What We Build', as: 'আমি কি নিৰ্মাণ কৰোঁ', hash: '' },
+  { href: '/projects', key: 'projects', en: 'Projects', as: 'প্ৰকল্পসমূহ', hash: '' },
+  { href: '/blog', key: 'blog', en: 'Blog', as: 'ব্লগ', hash: '' },
+  { href: '/faq', key: 'faq', en: 'FAQ', as: 'সাধাৰণ প্ৰশ্ন', hash: '' },
+  { href: '/contribute', key: 'contribute', en: 'Contribute', as: 'অৱদান আগবঢ়াওক', hash: '' },
+];
+
+const { active = 'about' } = Astro.props;
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+---
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="/" class="brand">
+      <img
+        src="/assets/images/logo.svg"
+        alt="Axomiya IT Labs"
+        width="160"
+        height="40"
+        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark-fallback',textContent:'AIL'}))"
+      />
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Primary">
+      {
+        navItems.map((item) => {
+          const itemPath = item.href.replace(/\/+$/, '') || '/';
+          const isActive =
+            item.key === active ||
+            (path.startsWith(itemPath) && itemPath !== '/');
+          return (
+            <a
+              href={item.href}
+              class={isActive ? 'active' : ''}
+              lang-en
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {item.en}
+            </a>
+            <a
+              href={item.href}
+              class={isActive ? 'active' : ''}
+              lang-as
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {item.as}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="is-active">EN</button>
+        <button type="button" data-lang="as">অস</button>
+      </div>
+      <a href="/contribute" class="btn btn-primary">
+        <span lang-en>Join the Community</span>
+        <span lang-as>সম্প্ৰদায়ত যোগদান</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>

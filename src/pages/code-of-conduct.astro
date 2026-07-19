@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const principles = [
+  {
+    num: '01',
+    en: 'Be respectful and inclusive',
+    as: 'সম্মানজনক আৰু অন্তৰ্ভুক্তিমূলক',
+    enBody: 'Treat everyone with respect, regardless of their background, experience level, or identity. Harassment, discrimination, and exclusionary behavior are not tolerated.',
+    asBody: 'প্ৰতিজনক সম্মানৰ সৈতে বৰ্তন কৰক, পটভূমি, অভিজ্ঞতা স্তৰ, বা পৰিচয় যিয়েই নহওক। হাৰাসমেণ্ট, বিভেদ, আৰু বাহিৰীকৰণমূলক আচৰণ সহ্য কৰা নহয়।',
+  },
+  {
+    num: '02',
+    en: 'Be collaborative and generous',
+    as: 'সহযোগী আৰু উদার',
+    enBody: 'We are stronger together. Share knowledge, offer help, and celebrate others\' contributions. Give credit where it is due.',
+    asBody: 'আমি একেলগে শক্তিশালী। জ্ঞান শেয়াৰ কৰক, সহায় আগবঢ়াওক, আৰু অন্যান্যৰ অৱদান উদযাপন কৰক। য\'ত প্ৰয়োজন তাৰ স্বীকৃতি দিয়ক।',
+  },
+  {
+    num: '03',
+    en: 'Be curious and patient',
+    as: 'কৌতূহলী আৰু ধৈৰ্য্যশীল',
+    enBody: 'Everyone starts somewhere. Ask questions, seek help, and be patient with others who are learning. No question is too small.',
+    asBody: 'প্ৰতিজনে যিকোনো ঠাইত আৰম্ভ কৰে। প্ৰশ্ন সোধক, সহায় বিচাৰক, আৰু শিকি থকাসকলোৰ সৈতে ধৈৰ্য্য ধৰণ কৰক। কোনো প্ৰশ্নও অতি সৰু নহয়।',
+  },
+  {
+    num: '04',
+    en: 'Be responsible and ethical',
+    as: 'দায়িত্বশীল আৰু নৈতিক',
+    enBody: 'Use AI and technology responsibly. Do not build harmful, biased, or deceptive systems. Consider the impact of your work on society.',
+    asBody: 'AI আৰু প্ৰযুক্তি দায়িত্বৰ সৈতে ব্যৱহাৰ কৰক। ক্ষতিকাৰক, পক্ষপাতপূৰ্ণ, বা ভ্ৰামক সিষ্টেম নিৰ্মাণ নকৰক। আপোনাৰ কামৰ সমাজৰ ওপৰত প্ৰভাৱ বিবেচনা কৰক।',
+  },
+  {
+    num: '05',
+    en: 'Make it accessible',
+    as: 'সকলোৰ বাবে সুলভ কৰি তোলক',
+    enBody: 'Build for everyone. Consider accessibility, language, and different abilities. If someone is left out, find a way to include them.',
+    asBody: 'সকলোৰ বাবে নিৰ্মাণ কৰক। সহজলভ্যতা, ভাষা, আৰু বিভিন্ন সক্ষমতা বিবেচনা কৰক। যদি কোনো পিছপৰি থাকে, তেওঁক অন্তৰ্ভুক্ত কৰিবলৈ এটা পথ বিচাৰক।',
+  },
+];
+
+const report = {
+  en: 'If you experience or witness unacceptable behavior, please report it immediately. You can reach us at axomiyaitlabs@gmail.com or message us on Telegram. All reports are confidential and will be investigated promptly.',
+  as: 'যদি আপুনি অগ্রহণযোগ্য আচৰণৰ সন্মুখীন হয় বা প্ৰত্যক্ষ কৰে, অনুগ্ৰহ কৰি তাৰ তাৎক্ষণিকভাৱে প্ৰতিবেদন কৰক। আপুনি axomiyaitlabs@gmail.com ত যোগাযোগ কৰিব পাৰে বা Telegram ত বাৰ্তা পঠাব পাৰে। সকলো প্ৰতিবেদন গোপনীয় আৰু তাৎক্ষণিকভাৱে তদন্ত কৰা হ\'ব।',
+};
+---
+
+<BaseLayout
+  title="Code of Conduct — Axomiya IT Labs"
+  description="Our community code of conduct. Be respectful, inclusive, and collaborative. Everyone is welcome."
+  active=""
+>
+  <div class="page-header">
+    <div class="wrap">
+      <div class="tag" lang-en>Code of Conduct</div>
+      <div class="tag" lang-as>আচাৰ সংহিতা</div>
+      <h1 lang-en>Be kind. Build together. Leave no one behind.</h1>
+      <h1 lang-as>সদয় হওক। একেলগে নিৰ্মাণ কৰক। কোনো পিছপৰি নাথাকিব।</h1>
+      <p lang-en>This code of conduct applies to all Axomiya IT Labs communities — GitHub, Telegram, Facebook, events, and contributions.</p>
+      <p lang-as>এই আচাৰ সংহিতা Axomiya IT Labsৰ সকলো সম্প্ৰদায়ত প্ৰযুজ্য — GitHub, Telegram, Facebook, ইভেণ্ট, আৰু অৱদান।</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="tag" lang-en>Our Principles</span>
+        <span class="tag" lang-as>আমাৰ নীতিসমূহ</span>
+        <h2 lang-en>Five rules that guide everything we do.</h2>
+        <h2 lang-as>পাঁচটা নিয়ম যিয়ে আমাৰ প্ৰতিটো কাম পথপ্ৰদৰ্শন কৰে।</h2>
+      </div>
+      <div class="values-list">
+        {
+          principles.map((v) => (
+            <div class="value-card reveal">
+              <span class="num">{v.num}</span>
+              <div>
+                <h3 lang-en>{v.en}</h3>
+                <h3 lang-as>{v.as}</h3>
+                <p lang-en>{v.enBody}</p>
+                <p lang-as>{v.asBody}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--surface-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="tag" lang-en>Reporting</span>
+        <span class="tag" lang-as>প্ৰতিবেদন</span>
+        <h2 lang-en>If something goes wrong, tell us.</h2>
+        <h2 lang-as>যদি কোনো সমস্যা হয়, আমাক জনাওক।</h2>
+        <p lang-en>{report.en}</p>
+        <p lang-as>{report.as}</p>
+      </div>
+      <div class="join-links" style="justify-content: center;">
+        <a href="mailto:axomiyaitlabs@gmail.com" class="btn btn-primary">
+          <span lang-en>Contact Us</span>
+          <span lang-as>যোগাযোগ কৰক</span>
+        </a>
+        <a href="https://t.me/AxomiyaITLabs" target="_blank" rel="noopener" class="btn btn-outline">
+          <span lang-en>Telegram</span>
+          <span lang-as>টেলিগ্ৰাম</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

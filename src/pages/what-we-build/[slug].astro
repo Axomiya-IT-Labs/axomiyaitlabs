@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { builds } from '../../data/builds';
+
+export async function getStaticPaths() {
+  return builds.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+---
+
+<BaseLayout
+  title={`${item.en} — Axomiya IT Labs`}
+  description={item.enBody}
+  active="build"
+  canonical={`${Astro.site}what-we-build/${item.slug}`}
+>
+  <div class="page-header">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/what-we-build" lang-en>← Back to What We Build</a>
+        <a href="/what-we-build" lang-as>← আমি কি নিৰ্মাণ কৰোঁলৈ উভতি যাওক</a>
+      </div>
+      <div class="tag" lang-en>{item.en}</div>
+      <div class="tag" lang-as>{item.as}</div>
+      <h1 lang-en>{item.en}</h1>
+      <h1 lang-as>{item.as}</h1>
+      <p class="lead" lang-en>{item.enBody}</p>
+      <p class="lead" lang-as>{item.asBody}</p>
+    </div>
+  </div>
+
+  {item.image && (
+    <div class="project-hero-image">
+      <img src={item.image} alt={item.alt} loading="lazy" />
+    </div>
+  )}
+
+  <!-- ============ QUOTE BANNER ============ -->
+  {item.quoteEn && (
+    <section class="quote-banner-section">
+      <div class="wrap">
+        <blockquote class="inspiration-quote">
+          <p lang-en>{item.quoteEn}</p>
+          <p lang-as>{item.quoteAs}</p>
+          <cite>— {item.quoteAuthor}</cite>
+        </blockquote>
+      </div>
+    </section>
+  )}
+
+  <section class="project-wiki">
+    <div class="wrap">
+      <div class="project-wiki-grid">
+        <div class="project-wiki-main">
+          
+          <!-- What Problem We Solve -->
+          {item.problemEn && (
+            <div class="wiki-section problem-box">
+              <div>
+                <h2 lang-en>The Problem We Solve</h2>
+                <h2 lang-as>আমি সমাধান কৰা মূল সমস্যা</h2>
+                <p class="highlight-text" lang-en>{item.problemEn}</p>
+                <p class="highlight-text" lang-as>{item.problemAs}</p>
+              </div>
+            </div>
+          )}
+
+          <!-- Detailed Explanation -->
+          <div class="wiki-section">
+            <h2 lang-en>Our Approach &amp; Solution</h2>
+            <h2 lang-as>আমাৰ সমাধান আৰু দৃষ্টিভংগী</h2>
+            <p class="details-body" lang-en>{item.details}</p>
+            <p class="details-body" lang-as>{item.detailsAs}</p>
+          </div>
+
+          <!-- Impact & Vision -->
+          {item.impactEn && (
+            <div class="wiki-section impact-box">
+              <div>
+                <h2 lang-en>Expected Impact &amp; Vision</h2>
+                <h2 lang-as>প্ৰভাৱ আৰু দৃষ্টিভংগী</h2>
+                <p class="highlight-text" lang-en>{item.impactEn}</p>
+                <p class="highlight-text" lang-as>{item.impactAs}</p>
+              </div>
+            </div>
+          )}
+
+        </div>
+
+        <aside class="project-wiki-sidebar">
+          <div class="wiki-card">
+            <h3 lang-en>Quick Details</h3>
+            <h3 lang-as>দ্ৰুত তথ্য</h3>
+            <div class="wiki-meta-item">
+              <span lang-en>Category</span>
+              <span>{item.en}</span>
+            </div>
+            <div class="wiki-meta-item">
+              <span lang-en>Languages</span>
+              <span>Assamese &amp; English</span>
+            </div>
+            <div class="wiki-meta-item">
+              <span lang-en>Access</span>
+              <span>100% Free &amp; Open Source</span>
+            </div>
+          </div>
+
+          <div class="wiki-card wiki-contribute-card">
+            <h3 lang-en>Want to Build This with Us?</h3>
+            <h3 lang-as>আমাৰ সৈতে এই সঁজুলি নিৰ্মাণ কৰিব বিচাৰে?</h3>
+            <p lang-en>We welcome developers, designers, writers, and anyone curious to contribute to this category.</p>
+            <p lang-as>আমি ডেভেলপাৰ, ডিজাইনাৰ, লেখক আৰু কৌতূহলী সকলোকে এই বিভাগত অৱদান আগবঢ়াবলৈ স্বাগতম জনাওঁ।</p>
+            <a href="/contribute" class="btn btn-primary btn-sm">
+              <span lang-en>Start Contributing →</span>
+              <span lang-as>অৱদান আৰম্ভ কৰক →</span>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="contribute-strip">
+    <div class="wrap">
+      <h2 lang-en>See this technology in action</h2>
+      <h2 lang-as>বাস্তৱ প্ৰকল্পসমূহত এই প্ৰযুক্তি চাওক</h2>
+      <p lang-en>Explore our open-source projects or build a new tool alongside our community.</p>
+      <p lang-as>আমাৰ মুক্ত-উৎস প্ৰকল্পসমূহ অন্বেষণ কৰক বা সম্প্ৰদায়ৰ সৈতে এক নতুন সঁজুলি নিৰ্মাণ কৰক।</p>
+      <div class="contribute-links">
+        <a href="/projects" class="btn btn-primary">
+          <span lang-en>View Live Projects →</span>
+          <span lang-as>চলিত প্ৰকল্পসমূহ চাওক →</span>
+        </a>
+        <a href="/contribute" class="btn btn-outline">
+          <span lang-en>Start Contributing</span>
+          <span lang-as>অৱদান আৰম্ভ কৰক</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .quote-banner-section {
+    padding: 30px 0 10px 0;
+  }
+  .inspiration-quote {
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.04));
+    border-left: 4px solid var(--brand-primary, #6366f1);
+    border-radius: 0 16px 16px 0;
+    padding: 32px 36px;
+    text-align: left;
+  }
+  .inspiration-quote p {
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-primary, #ffffff);
+    margin-bottom: 12px;
+  }
+  .inspiration-quote cite {
+    display: block;
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--brand-primary, #a855f7);
+    margin-top: 8px;
+  }
+  .problem-box, .impact-box {
+    padding: 24px 28px;
+    border-radius: 14px;
+    margin-bottom: 32px;
+  }
+  .problem-box {
+    background: rgba(239, 68, 68, 0.06);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+  .impact-box {
+    background: rgba(16, 185, 129, 0.06);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+  .problem-box h2 {
+    color: #f87171;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  .impact-box h2 {
+    color: #34d399;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  .highlight-text {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text-secondary, #cbd5e1);
+    margin: 0;
+  }
+  .details-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary, #cbd5e1);
+  }
+</style>

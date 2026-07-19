@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { builds } from '../data/builds';
+
+const featured = builds.slice(0, 4);
+---
+
+<BaseLayout
+  title="What We Build — Axomiya IT Labs"
+  description="AI-powered open-source tools and platforms for education, finance, language tech, and developer productivity — built for Assam."
+  active="build"
+>
+  <div class="page-header">
+    <div class="wrap">
+      <div class="tag" lang-en>What We Build</div>
+      <div class="tag" lang-as>আমি কি নিৰ্মাণ কৰোঁ</div>
+      <h1 lang-en>Open-source tools that make technology accessible to everyone.</h1>
+      <h1 lang-as>প্ৰযুক্তিক সকলোৰে বাবে সহজলভ্য কৰি তোলা মুক্ত-উৎস সঁজুলি।</h1>
+      <p lang-en>We build open-source projects using AI to learn faster, code smarter, and ship products that solve real problems for Assamese communities.</p>
+      <p lang-as>আমি দ্ৰুতভাৱে শিকিবলৈ, স্মাৰ্টকৈ ক'ড লিখিবলৈ, আৰু অসমীয়া সম্প্ৰদায়ৰ বাবে প্ৰকৃত সমস্যা সমাধান কৰা চফ্টৱেৰ প্ৰকাশ কৰিবলৈ AI ব্যৱহাৰ কৰি মুক্ত-উৎস প্ৰকল্প নিৰ্মাণ কৰোঁ।</p>
+    </div>
+  </div>
+
+  <div class="build-header-image">
+    <img src="/assets/images/build-header.png" alt="What We Build - Axomiya IT Labs" loading="lazy" />
+  </div>
+
+  <!-- ============ BUILD GRID ============ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag" lang-en>Our Focus Areas</span>
+        <span class="tag" lang-as>আমাৰ মনোযোগৰ ক্ষেত্ৰসমূহ</span>
+        <h2 lang-en>Eight pillars. One mission.</h2>
+        <h2 lang-as>আঠটা স্তম্ভ। এটা লক্ষ্য।</h2>
+      </div>
+      <div class="build-grid">
+        {
+          builds.map((b) => (
+            <a href={`/what-we-build/${b.slug}`} class="build-card reveal">
+              <div class="build-card-img">
+                <img src={b.mainImage} alt={b.alt} loading="lazy" />
+              </div>
+              <h3 lang-en>{b.en}</h3>
+              <h3 lang-as>{b.as}</h3>
+              <p lang-en>{b.enBody}</p>
+              <p lang-as>{b.asBody}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISION ============ -->
+  <section style="background: var(--surface-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="tag" lang-en>Our Vision</span>
+        <span class="tag" lang-as>আমাৰ দৃষ্টিভঙ্গি</span>
+        <h2 lang-en>AI for everyone, built by everyone.</h2>
+        <h2 lang-as>AI সকলোৰ বাবে, সকলোৰ দ্বাৰা নিৰ্মিত।</h2>
+        <p lang-en>We imagine a future where AI removes every barrier — language, cost, skill, and background — so every person in Assam can understand technology, build with it, and benefit from it. You do not need to be an expert. You just need to start.</p>
+        <p lang-as>আমি এনে এক ভৱিষ্যতৰ কল্পনা কৰোঁ য'ত AI-য়ে প্ৰতিটো বাধা আঁতৰাই পেলায় — ভাষা, খৰচ, আৰু পটভূমি — যাতে অসমৰ প্ৰতিজন লোকে প্ৰযুক্তি বুজিব পাৰে আৰু তাৰ পৰা উপকৃত হ'ব পাৰে। আপুনি বিশেষজ্ঞ হ'বলৈ নালাগে। আপুনি কেৱল আৰম্ভ কৰিলেই হ'ল।</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS CTA ============ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="tag" lang-en>See our work</span>
+        <span class="tag" lang-as>আমাৰ কাম চাওক</span>
+        <h2 lang-en>Every project is open source, free, and ready to use.</h2>
+        <h2 lang-as>প্ৰতিটো প্ৰকল্পও মুক্ত-উৎস, বিনামূলীয়া, আৰু ব্যৱহাৰৰ বাবে প্ৰস্তুত।</h2>
+        <p lang-en>Explore live projects, see what is coming soon, and find one you want to contribute to. AI makes it easy to get started — just clone a repo and ask the community if you get stuck.</p>
+        <p lang-as>চলিত প্ৰকল্পসমূহ অন্বেষণ কৰক, আগলৈ কি আহিব চাওক, আৰু যিকোনো প্ৰকল্পত অৱদান আগবঢ়াওক। AI-য়ে আৰম্ভণি সহজ কৰি তোলে — কেৱল এটা ৰিপ'জিটৰী ক্ল'ন কৰক আৰু কিবা সমস্যা হ'লে সম্প্ৰদায়ক সোধক।</p>
+      </div>
+      <div class="join-links" style="justify-content: center;">
+        <a href="/projects" class="btn btn-primary">
+          <span lang-en>See our projects →</span>
+          <span lang-as>আমাৰ প্ৰকল্পসমূহ চাওক →</span>
+        </a>
+        <a href="/contribute" class="btn btn-outline">
+          <span lang-en>Start Contributing →</span>
+          <span lang-as>অৱদান আৰম্ভ কৰক →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

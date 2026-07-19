@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const paths = [
+  {
+    icon: '01',
+    en: 'Developers & Engineers',
+    as: 'ডেভেলপাৰ আৰু প্ৰযুক্তি-বিজ্ঞসকলৰ বাবে',
+    enBody: `Build open-source tools, fix bugs, optimize performance, or add features. Clone any repository, create a feature branch, and submit a pull request. AI tools like Copilot or ChatGPT can help you navigate the code faster.`,
+    asBody: `মুক্ত-উৎস সঁজুলি নিৰ্মাণ কৰক, ভুল (bug) সমাধান কৰক বা নতুন বৈশিষ্ট্য যোগ কৰক। যিকোনো ৰিপ'জিটৰী ক্ল'ন কৰক, এটা নতুন ব্ৰাঞ্চ খোলক আৰু পুল ৰিকুৱেষ্ট দাখিল কৰক। ক'ড বুজিবলৈ Copilot বা ChatGPT ৰ দৰে AI সঁজুলি ব্যৱহাৰ কৰিব পাৰে।`,
+    steps: [
+      { en: `Clone repo: git clone https://github.com/Axomiya-IT-Labs/<project>.git`, as: `ৰিপ'জিটৰী ক্ল'ন কৰক: git clone https://github.com/Axomiya-IT-Labs/<project>.git` },
+      { en: `Create a branch: git checkout -b feature/my-contribution`, as: `নতুন ব্ৰাঞ্চ খোলক: git checkout -b feature/my-contribution` },
+      { en: `Commit changes: git add . && git commit -m "Add feature"`, as: `পৰিৱৰ্তন সংৰক্ষণ কৰক: git add . && git commit -m "Add feature"` },
+      { en: `Push & open PR: git push origin feature/my-contribution`, as: `পুচ কৰক আৰু PR খোলক: git push origin feature/my-contribution` },
+    ],
+  },
+  {
+    icon: '02',
+    en: 'Writers & Translators',
+    as: 'লেখিকা-লেখক আৰু অনুবাদকসকলৰ বাবে',
+    enBody: `No coding background needed. Help translate documentation into pure Assamese, write beginner-friendly tutorials, or publish articles on our blog. Every translated guide helps a student learn.`,
+    asBody: `ক'ডিং জ্ঞানৰ প্ৰয়োজন নাই। নথিপত্ৰ অসমীয়ালৈ অনুবাদ কৰাত, সৰল নিৰ্দেশিকা লিখাত বা ব্লগ প্ৰবন্ধ প্ৰকাশ কৰাত সহায় কৰক। প্ৰতিটো অনুবাদে এজন ছাত্ৰক শিকাৰ ক্ষেত্ৰত সহায় কৰে।`,
+    steps: [
+      { en: `Browse our blog articles or projects to find topics needing translation`, as: `অনুবাদ কৰিবলগীয়া বিষয় বিচাৰিবলৈ আমাৰ ব্লগ প্ৰবন্ধ বা প্ৰকল্পসমূহ চাওক` },
+      { en: `Fork the repository and update Markdown (.md) files in src/content/blog/`, as: `ৰিপ'জিটৰী ফৰ্ক কৰক আৰু src/content/blog/ ৰ Markdown ফাইলসমূহ আপডেট কৰক` },
+      { en: `Submit a Pull Request with your translation or article`, as: `আপোনাৰ অনুবাদ বা প্ৰবন্ধৰ সৈতে এটা পুল ৰিকুৱেষ্ট দাখিল কৰক` },
+    ],
+  },
+  {
+    icon: '03',
+    en: 'Designers & Visual Creators',
+    as: 'ডিজাইনাৰ আৰু সৃষ্টিশীলসকলৰ বাবে',
+    enBody: `Help design UI mockups, icons, blog covers (1200×630 PNG), and community graphics. If you work with Figma, SVG, or graphic design tools, your creativity is welcome.`,
+    asBody: `UI আৰ্হি, আইকন, ব্লগৰ কভাৰ ফটো (1200×630 PNG) আৰু ছচিয়েল মিডিয়া গ্ৰাফিক্স ডিজাইন কৰাত সহায় কৰক। Figma, SVG বা গ্ৰাফিক্স সঁজুলি ব্যৱহাৰ কৰিব জানিলেই আপোনাক স্বাগতম।`,
+    steps: [
+      { en: `Join our Telegram community and share your design ideas`, as: `আমাৰ টেলিগ্ৰাম সম্প্ৰদায়ত যোগ দিয়ক আৰু আপোনাৰ ধাৰণাসমূহ শ্বেয়াৰ কৰক` },
+      { en: `Pick open design tasks labeled "design" on GitHub`, as: `গিটহাবত "design" লেবেল থকা মুকলি কাম বাছনি কৰক` },
+      { en: `Submit design assets as PNG or SVG format via PR`, as: `আপোনাৰ ডিজাইন PNG বা SVG বিন্যাসত PR ৰ জৰিয়তে দাখিল কৰক` },
+    ],
+  },
+  {
+    icon: '04',
+    en: 'Testers & QA Enthusiasts',
+    as: 'পৰীক্ষক আৰু মান নিয়ন্ত্ৰকসকলৰ বাবে',
+    enBody: `Use our web apps on mobile or desktop devices. Report bugs, check Assamese text rendering, suggest UI improvements, or test on low-bandwidth connections.`,
+    asBody: `আমাৰ ৱেব এপসমূহ ব্যৱহাৰ কৰি চাওক। ভুল (bug) আঙুলিয়াই দিওক, অসমীয়া বানান আৰু বাক্যসমূহ পৰীক্ষা কৰক, আৰু অভিজ্ঞতা অধিক উন্নত কৰিবলৈ পৰামৰ্শ দিয়ক।`,
+    steps: [
+      { en: `Explore live applications listed on /projects`, as: `/projects ত উপলব্ধ থকা চলিত এপসমূহ অন্বেষণ কৰক` },
+      { en: `Open an Issue on GitHub describing the bug or suggestion`, as: `গিটহাবত ভুল বা পৰামৰ্শ উল্লেখ কৰি এটা Issue খোলক` },
+      { en: `Attach screenshots or details to help developers fix it fast`, as: `সমস্যাটো দ্ৰুতভাৱে সমাধান কৰিবলৈ স্ক্ৰিনশট যোগ কৰক` },
+    ],
+  },
+  {
+    icon: '05',
+    en: 'Students & Curious Beginners',
+    as: 'ছাত্ৰ-ছাত্ৰী আৰু নতুন শিকাৰুসকলৰ বাবে',
+    enBody: `You don't need any prior expertise. Start by reading our blog, testing tools, asking questions on Telegram, and making your very first Git contribution with our guidance.`,
+    asBody: `কোনো আগতীয়া অভিজ্ঞতাৰ প্ৰয়োজন নাই। আমাৰ ব্লগ পঢ়ি, সঁজুলিসমূহ ব্যৱহাৰ কৰি, টেলিগ্ৰামত প্ৰশ্ন সুধি আৰু আমাৰ সহায়ত আপোনাৰ প্ৰথম গিট অৱদান যোগাই আৰম্ভ কৰক।`,
+    steps: [
+      { en: `Join our Telegram group and introduce yourself to the team`, as: `আমাৰ টেলিগ্ৰাম গ্ৰুপত যোগ দিয়ক আৰু নিজৰ পৰিচয় দিয়ক` },
+      { en: `Read our guide on making your first Pull Request`, as: `আপোনাৰ প্ৰথম পুল ৰিকুৱেষ্ট কৰাৰ নিৰ্দেশিকা পঢ়ক` },
+      { en: `Ask any question — our community is here to guide you`, as: `যিকোনো প্ৰশ্ন সোধক — আমাৰ সম্প্ৰদায় আপোনাক সহায় কৰিবলৈ প্ৰস্তুত` },
+    ],
+  },
+];
+
+const missionEn = `Our mission is to make technology, software, and AI education free and accessible to everyone in Assam. Whether you write code, translate articles, design graphics, or test tools — every contribution matters. AI helps us accelerate learning and building, so everyone can participate regardless of background.`;
+
+const missionAs = `আমাৰ লক্ষ্য হৈছে প্ৰযুক্তি, ছফ্টৱেৰ আৰু AI শিক্ষাক অসমৰ প্ৰতিজন মানুহৰ বাবে বিনামূলীয়া আৰু সহজলভ্য কৰি তোলা। আপুনি ক'ড লিখক, প্ৰবন্ধ অনুবাদ কৰক, গ্ৰাফিক্স ডিজাইন কৰক বা সঁজুলি পৰীক্ষা কৰক — প্ৰতিটো অৱদানৰে মূল্য আছে। AI-য়ে আমাক শিকা আৰু নিৰ্মাণৰ গতি দ্ৰুত কৰাত সহায় কৰে।`;
+
+const noteEn = `Axomiya IT Labs is a non-commercial, open-source community. Please do not use community spaces for commercial advertisements or business promotions. For business collaborations, sponsorships, or official inquiries, please speak directly with community admins on Telegram.`;
+
+const noteAs = `অসমীয়া আই টি লেবছ হৈছে এটা অবাণিজ্যিক, মুক্ত-উৎস সম্প্ৰদায়। অনুগ্ৰহ কৰি বাণিজ্যিক বিজ্ঞাপন বা ব্যৱসায়িক প্ৰচাৰৰ বাবে এই পৰিসৰ ব্যৱহাৰ নকৰিব। অফিচিয়েল সহযোগিতা বা প্ৰায়োজকৰ বাবে টেলিগ্ৰামত পোনপটীয়াকৈ এডমিনসকলৰ সৈতে কথা পাতক।`;
+---
+
+<BaseLayout
+  title="Contribute — Axomiya IT Labs"
+  description="Join Axomiya IT Labs as an open-source contributor — code, translate, design, test, or teach. Everyone is welcome."
+  active="contribute"
+>
+  <!-- ============ HERO ============ -->
+  <section class="contrib-hero">
+    <div class="wrap">
+      <div class="tag" lang-en>Open for Contributors</div>
+      <div class="tag" lang-as>অৱদানকাৰীৰ বাবে মুকলি</div>
+      <h1 lang-en>Whether it is your first line of code or your fiftieth — you belong here.</h1>
+      <h1 lang-as>আপোনাৰ প্ৰথম ক'ড হ'ওক বা ৫০তম — আপুনি ইয়াতেই আপোনজন।</h1>
+      <p class="lead" lang-en>No prior expertise required. AI acts as your daily assistant to help you learn, code, and translate faster. Pick a path below and join us in building free software for Assam.</p>
+      <p class="lead" lang-as>কোনো আগতীয়া অভিজ্ঞতাৰ প্ৰয়োজন নাই। AI-য়ে আপোনাক দ্ৰুতভাৱে শিখিবলৈ, ক'ড কৰিবলৈ আৰু অনুবাদ কৰাত সহায় কৰে। তলৰ এটা পথ বাছি লওক আৰু অসমৰ বাবে বিনামূলীয়া চফ্টৱেৰ নিৰ্মাণত আমাৰ সৈতে যোগ দিয়ক।</p>
+      <div class="hero-cta">
+        <a href="#ways" class="btn btn-primary">
+          <span lang-en>Pick Your Contribution Path ↓</span>
+          <span lang-as>আপোনাৰ অৱদানৰ পথ বাছনি কৰক ↓</span>
+        </a>
+        <a href="https://github.com/Axomiya-IT-Labs" target="_blank" rel="noopener" class="btn btn-outline">
+          <span lang-en>Explore GitHub Repos</span>
+          <span lang-as>গিটহাব ৰিপ'জিটৰী চাওক</span>
+        </a>
+        <a href="https://t.me/AxomiyaITLabs" target="_blank" rel="noopener" class="btn btn-outline">
+          <span lang-en>Join Telegram Group</span>
+          <span lang-as>টেলিগ্ৰাম গ্ৰুপত যোগ দিয়ক</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="contrib-header-image">
+    <img src="/assets/images/contribute-header.png" alt="Contribute to Axomiya IT Labs" loading="lazy" />
+  </div>
+
+  <!-- ============ MISSION ============ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="tag" lang-en>Our Mission</span>
+        <span class="tag" lang-as>আমাৰ লক্ষ্য</span>
+        <h2 lang-en>Building technology together — no one left behind.</h2>
+        <h2 lang-as>একেলগে প্ৰযুক্তি নিৰ্মাণ — কোনো পিছপৰি নাথাকে।</h2>
+        <p lang-en>{missionEn}</p>
+        <p lang-as>{missionAs}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WAYS TO CONTRIBUTE ============ -->
+  <section id="ways" style="background: var(--surface-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag" lang-en>Pick Your Path</span>
+        <span class="tag" lang-as>আপোনাৰ পথ বাছনি কৰক</span>
+        <h2 lang-en>Every skill has a meaningful place in open source.</h2>
+        <h2 lang-as>মুক্ত-উৎসত প্ৰতিটো দক্ষতাৰে এক অৰ্থপূৰ্ণ স্থান আছে।</h2>
+      </div>
+      <div class="ways-grid">
+        {
+          paths.map((w) => (
+            <div class="way-card reveal">
+              <div class="icon">{w.icon}</div>
+              <h3 lang-en>{w.en}</h3>
+              <h3 lang-as>{w.as}</h3>
+              <p lang-en>{w.enBody}</p>
+              <p lang-as>{w.asBody}</p>
+              <div class="way-steps">
+                {w.steps.map((s, i) => (
+                  <div class="way-step">
+                    <span class="way-step-num">{String(i + 1).padStart(2, '0')}</span>
+                    <div>
+                      <p lang-en>{s.en}</p>
+                      <p lang-as>{s.as}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GIT WALKTHROUGH ============ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag" lang-en>Git Command Cheat Sheet</span>
+        <span class="tag" lang-as>দ্ৰুত গিট নিৰ্দেশিকা</span>
+        <h2 lang-en>How to clone a project and submit your contribution.</h2>
+        <h2 lang-as>প্ৰকল্প ক্ল'ন কৰি আপোনাৰ অৱদান কেনেকৈ দাখিল কৰিব।</h2>
+        <p lang-en>Run these terminal commands step by step. Replace <code>&lt;project&gt;</code> with the repository name. Use AI assistants like ChatGPT or Copilot to understand unfamiliar code blocks.</p>
+        <p lang-as>টাৰ্মিনালত এই সৰল কমান্ডসমূহ চলাওক। <code>&lt;project&gt;</code> ৰ ঠাইত প্ৰকল্পৰ নাম লিখক। অপৰিচিত ক'ড বুজিবলৈ ChatGPT বা Copilot ৰ সহায় লওক।</p>
+      </div>
+      <div class="code-blocks">
+        <div class="code-block">
+          <div class="code-header">
+            <span lang-en>1. Clone the repository to your machine</span>
+            <span lang-as>১. ৰিপ'জিটৰী কম্পিউটাৰলৈ ক্ল'ন কৰক</span>
+          </div>
+          <code>git clone https://github.com/Axomiya-IT-Labs/&lt;project&gt;.git</code>
+        </div>
+        <div class="code-block">
+          <div class="code-header">
+            <span lang-en>2. Navigate into the project folder</span>
+            <span lang-as>২. প্ৰকল্পৰ ফ'ল্ডাৰলৈ যাওক</span>
+          </div>
+          <code>cd &lt;project&gt;</code>
+        </div>
+        <div class="code-block">
+          <div class="code-header">
+            <span lang-en>3. Create a dedicated feature branch</span>
+            <span lang-as>৩. এটা নতুন ব্ৰাঞ্চ খোলক</span>
+          </div>
+          <code>git checkout -b feature/my-contribution</code>
+        </div>
+        <div class="code-block">
+          <div class="code-header">
+            <span lang-en>4. Stage and commit your changes with a clear message</span>
+            <span lang-as>৪. পৰিৱৰ্তনসমূহ সংৰক্ষণ আৰু কমিট কৰক</span>
+          </div>
+          <code>git add . &amp;&amp; git commit -m "feat: add my contribution"</code>
+        </div>
+        <div class="code-block">
+          <div class="code-header">
+            <span lang-en>5. Push to GitHub and open a Pull Request</span>
+            <span lang-as>৫. গিটহাবলৈ পুচ কৰক আৰু পুল ৰিকুৱেষ্ট খোলক</span>
+          </div>
+          <code>git push origin feature/my-contribution</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMMUNITY RULE ============ -->
+  <section class="contrib-note">
+    <div class="wrap">
+      <div class="note-card">
+        <h3 lang-en>Open Source &amp; Community Standards</h3>
+        <h3 lang-as>মুক্ত-উৎস আৰু সম্প্ৰদায়ৰ নীতি</h3>
+        <p lang-en>{noteEn}</p>
+        <p lang-as>{noteAs}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JOIN STRIP ============ -->
+  <section class="join-strip" id="join">
+    <div class="wrap">
+      <h2 lang-en>Ready to make your first contribution?</h2>
+      <h2 lang-as>আপোনাৰ প্ৰথম অৱদান আগবঢ়াবলৈ প্ৰস্তুত নেকি?</h2>
+      <p lang-en>Join our Telegram community — our mentors are online and ready to help you pick your first task.</p>
+      <p lang-as>আমাৰ টেলিগ্ৰাম সম্প্ৰদায়ত যোগ দিয়ক — প্ৰথম কামটো বাছনি কৰাত সহায় কৰিবলৈ আমাৰ মেণ্টৰসকল প্ৰস্তুত।</p>
+      <div class="join-links">
+        <a href="/projects">
+          <span lang-en>🔗 Browse Projects</span>
+          <span lang-as>🔗 প্ৰকল্পসমূহ চাওক</span>
+        </a>
+        <a href="https://t.me/AxomiyaITLabs" target="_blank" rel="noopener" class="tg">
+          <span lang-en><img src="/assets/icons/telegram.svg" alt="" width="18" height="18" /> Telegram Group</span>
+          <span lang-as><img src="/assets/icons/telegram.svg" alt="" width="18" height="18" /> টেলিগ্ৰাম গ্ৰুপ</span>
+        </a>
+        <a href="https://www.facebook.com/groups/1556385872564016/" target="_blank" rel="noopener" class="fb">
+          <span lang-en><img src="/assets/icons/facebook.svg" alt="" width="18" height="18" /> Facebook Community</span>
+          <span lang-as><img src="/assets/icons/facebook.svg" alt="" width="18" height="18" /> ফেচবুক সম্প্ৰদায়</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,382 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { builds } from '../data/builds';
+
+const posts = await getCollection('blog');
+
+const postsBySlug = new Map();
+for (const post of posts) {
+  const baseSlug = post.slug.replace(/^(en|as)\//, '');
+  if (!postsBySlug.has(baseSlug)) {
+    postsBySlug.set(baseSlug, { en: null, as: null, slug: baseSlug });
+  }
+  const entry = postsBySlug.get(baseSlug);
+  if (post.data.lang === 'en') entry.en = post;
+  else entry.as = post;
+}
+
+const featured = Array.from(postsBySlug.entries())
+  .sort((a, b) => new Date(b[1].en?.data.date || b[1].as?.data.date || '').getTime() - new Date(a[1].en?.data.date || a[1].as?.data.date || '').getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title="Axomiya IT Labs — AI & Open Source, Built for Assam"
+  description="Axomiya IT Labs builds free, open-source AI tools, education, and software — in Assamese and English. Learn. Build. Share. Automate."
+>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        <span lang-en>Open Source · Free Forever · Made in Assam</span>
+        <span lang-as>মুক্ত উৎস · চিৰদিনৰ বাবে বিনামূলীয়া · অসমত নিৰ্মিত</span>
+      </div>
+      <h1 lang-en>Turning consumers into <em>creators</em>, one open-source line at a time.</h1>
+      <h1 lang-as>প্ৰতিটো মুক্ত-উৎস শাৰীৰে, উপভোক্তাক পৰিণত কৰোঁ <em>সৃষ্টিকৰ্তালৈ</em>।</h1>
+
+      <p class="lead" lang-en>
+        Axomiya IT Labs builds free, open-source AI tools, education, and software in Assamese
+        and English. AI acts as your reliable daily working buddy — assisting you in coding precisely, writing clearly, automating repetitive tasks, and solving real-world problems. No prior expertise required.
+      </p>
+      <p class="lead" lang-as>
+        অসমীয়া আই টি লেবছ-এ অসমীয়া আৰু ইংৰাজী দুয়োটাতে বিনামূলীয়া, মুক্ত-উৎস AI সঁজুলি, শিক্ষা আৰু চফ্টৱেৰ নিৰ্মাণ কৰে। AI হৈছে আপোনাৰ দৈনন্দিন কামৰ এক নিৰ্ভৰযোগ্য সংগী — ক'ড নিৰ্ভুলভাৱে কৰাত, স্পষ্টকৈ লিখাত, কাম স্বয়ংক্ৰিয় কৰাত আৰু প্ৰকৃত সমস্যা সমাধানত আপোনাক সহায় কৰে।
+      </p>
+
+      <div class="hero-cta">
+        <a href="/contribute" class="btn btn-primary">
+          <span lang-en>Start Contributing →</span>
+          <span lang-as>অৱদান আৰম্ভ কৰক →</span>
+        </a>
+        <a href="/projects" class="btn btn-outline">
+          <span lang-en>See our projects</span>
+          <span lang-as>আমাৰ প্ৰকল্পসমূহ চাওক</span>
+        </a>
+        <a href="/blog" class="btn btn-outline">
+          <span lang-en>Read the Blog</span>
+          <span lang-as>ব্লগ পঢ়ক</span>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <strong>100%</strong>
+          <span lang-en>Free & open source</span>
+          <span lang-as>বিনামূলীয়া আৰু মুক্ত-উৎস</span>
+        </div>
+        <div>
+          <strong>2</strong>
+          <span lang-en>Languages — EN & অসমীয়া</span>
+          <span lang-as>ভাষা — EN & অসমীয়া</span>
+        </div>
+        <div>
+          <strong>∞</strong>
+          <span lang-en>Room to build with us</span>
+          <span lang-as>আমাৰ সৈতে নিৰ্মাণৰ সুযোগ</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span lang-en>AI Applications</span><span lang-as>AI এপ্লিকেচন</span>
+      <span lang-en>Educational Platforms</span><span lang-as>শিক্ষামূলক প্লেটফৰ্ম</span>
+      <span lang-en>Learning Games</span><span lang-as>শিক্ষণ গেম</span>
+      <span lang-en>Automation Tools</span><span lang-as>স্বয়ংক্ৰিয় সঁজুলি</span>
+      <span lang-en>Assamese Language Tech</span><span lang-as>অসমীয়া ভাষা প্ৰযুক্তি</span>
+      <span lang-en>Developer Tools</span><span lang-as>ডেভেলপাৰ সঁজুলি</span>
+    </div>
+  </div>
+
+  <!-- ============ MANIFESTO / ABOUT ============ -->
+  <section class="manifesto" id="about">
+    <div class="wrap manifesto-grid">
+      <div>
+        <span class="tag" lang-en>Why we exist</span>
+        <span class="tag" lang-as>আমি কিয় আছোঁ</span>
+        <p class="big-line" lang-en>
+          Elon Musk taught himself by reading. Ritesh Agarwal built OYO without finishing
+          college. <span class="hl">Learning never stops</span> — and today, AI gives every one of us
+          that same head start. You do not need to be an expert. You just need to be curious.
+        </p>
+        <p class="big-line" lang-as>
+          এলন মাস্কে নিজে পঢ়ি শিকিলে। ৰিতেশ আগৰৱালে কলেজ শেষ নকৰাকৈয়ে OYO নিৰ্মাণ কৰিলে।
+          <span class="hl">শিকা কেতিয়াও বন্ধ নহয়</span> — আৰু আজি, AI-এ আমি সকলোকে সেই একেটা সুবিধা দিছে। আপুনি বিশেষজ্ঞ হ'বলৈ নালাগে। আপুনি কেৱল কৌতূহলী হ'লেই হ'ব।
+        </p>
+      </div>
+      <ul class="manifesto-list">
+        <li class="reveal">
+          <span class="num">01</span>
+          <div>
+            <strong lang-en>From consumers to creators — with AI as your buddy</strong>
+            <strong lang-as>উপভোক্তাৰ পৰা সৃষ্টিকৰ্তালৈ — AI ৰ সহায়ত</strong>
+            <span lang-en>Most people only consume content. With AI as your daily working buddy, you can build tools, write code, automate work, and solve precise problems.</span>
+            <span lang-as>বেছিভাগ মানুহে কেৱল সমল উপভোগ কৰে। কিন্তু AI ক দৈনন্দিন কামৰ সংগী হিচাপে লৈ আপুনি সঁজুলি নিৰ্মাণ কৰিব পাৰে, ক'ড লিখিব পাৰে আৰু প্ৰকৃত সমস্যা সমাধান কৰিব পাৰে।</span>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="num">02</span>
+          <div>
+            <strong lang-en>Open source, first</strong>
+            <strong lang-as>প্ৰথমতে মুক্ত-উৎস</strong>
+            <span lang-en>Everything we make is free, transparent, and community-driven — built with contributors, not just for users.</span>
+            <span lang-as>আমি নিৰ্মাণ কৰা সকলো বস্তু বিনামূলীয়া, স্বচ্ছ আৰু সম্প্ৰদায়-চালিত — ব্যৱহাৰকাৰীৰ বাবে নহয়, অৱদানকাৰীৰ সৈতে নিৰ্মিত।</span>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="num">03</span>
+          <div>
+            <strong lang-en>Assamese, by default</strong>
+            <strong lang-as>স্বাভাৱিকতেই অসমীয়া</strong>
+            <span lang-en>Assam deserves world-class tech education in its own language — so we build in অসমীয়া and English, always.</span>
+            <span lang-as>অসমে নিজৰ ভাষাত বিশ্বমানৰ প্ৰযুক্তি শিক্ষা পোৱাৰ অধিকাৰ আছে — সেয়েহে আমি সদায় অসমীয়া আৰু ইংৰাজী দুয়োটাতে নিৰ্মাণ কৰোঁ।</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ WHAT WE BUILD ============ -->
+  <section id="build">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag" lang-en>What we build</span>
+        <span class="tag" lang-as>আমি কি নিৰ্মাণ কৰোঁ</span>
+        <h2 lang-en>Open-source tools that make technology accessible to everyone.</h2>
+        <h2 lang-as>প্ৰযুক্তিক সকলোৰে বাবে সহজলভ্য কৰি তোলা মুক্ত-উৎস সঁজুলি।</h2>
+      </div>
+
+      <div class="build-grid">
+        {
+          builds.map((b) => (
+            <a href={`/what-we-build/${b.slug}`} class="build-card reveal">
+              <div class="build-card-img">
+                <img src={b.mainImage} alt={b.alt} loading="lazy" />
+              </div>
+              <h3 lang-en>{b.en}</h3>
+              <h3 lang-as>{b.as}</h3>
+            </a>
+          ))
+        }
+      </div>
+      <p class="build-cta" lang-en><a href="/projects">See our already build projects.</a></p>
+      <p class="build-cta" lang-as><a href="/projects">আমাৰ ইতিমধ্যে নিৰ্মিত প্ৰকল্পসমূহ চাওক।</a></p>
+    </div>
+  </section>
+
+  <!-- ============ AUDIENCE ============ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag" lang-en>Built for everyone</span>
+        <span class="tag" lang-as>সকলোৰে বাবে নিৰ্মিত</span>
+        <h2 lang-en>No technical background required. AI is here to help.</h2>
+        <h2 lang-as>কোনো কাৰিকৰী পটভূমিৰ প্ৰয়োজন নাই। AI সহায় কৰিবলৈ আছে।</h2>
+      </div>
+      <div class="audience-cloud">
+        <a href="#" lang-en>Kids</a><a href="#" lang-as>শিশু</a>
+        <a href="#" lang-en>Students</a><a href="#" lang-as>শিক্ষাৰ্থী</a>
+        <a href="#" lang-en>Teachers</a><a href="#" lang-as>শিক্ষক</a>
+        <a href="#" lang-en>Parents</a><a href="#" lang-as>অভিভাৱক</a>
+        <a href="#" lang-en>Developers</a><a href="#" lang-as>ডেভেলপাৰ</a>
+        <a href="#" lang-en>Entrepreneurs</a><a href="#" lang-as>উদ্যোগী</a>
+        <a href="#" lang-en>Freelancers</a><a href="#" lang-as>ফ্ৰীলেন্সাৰ</a>
+        <a href="#" lang-en>Job Seekers</a><a href="#" lang-as>চাকৰি প্ৰাৰ্থী</a>
+        <a href="#" lang-en>Govt. Employees</a><a href="#" lang-as>চৰকাৰী কৰ্মচাৰী</a>
+        <a href="#" lang-en>Small Businesses</a><a href="#" lang-as>ক্ষুদ্ৰ ব্যৱসায়ী</a>
+        <a href="#" lang-en>Creators</a><a href="#" lang-as>সৃষ্টিকৰ্তা</a>
+        <a href="#" lang-en>Lifelong Learners</a><a href="#" lang-as>আজীৱন শিক্ষাৰ্থী</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISION ============ -->
+  <section class="vision">
+    <div class="wrap vision-grid">
+      <blockquote>
+        <span lang-en>We imagine a future where AI removes every barrier — language, cost, skill, and background — so every person in Assam can understand technology, build with it, and benefit from it. You do not need to be an expert. You just need to be curious.</span>
+        <span lang-as>আমি এনে এক ভৱিষ্যতৰ কল্পনা কৰোঁ য'ত AI প্ৰতিটো বাধা আঁতৰাই দিয়ে — ভাষা, খৰচ, দক্ষতা, আৰু পটভূমি — যাতে অসমৰ প্ৰতিজন লোকে প্ৰযুক্তি বুজিব পাৰে, তাৰ সৈতে নিৰ্মাণ কৰিব পাৰে, আৰু তাৰ পৰা উপকৃত হ'ব পাৰে। আপুনি বিশেষজ্ঞ হ'বলৈ নালাগে। আপুনি কেৱল কৌতূহলী হ'লেই হ'ব।</span>
+      </blockquote>
+      <div class="vision-panel">
+        <ul>
+          <li><span lang-en>We want children to dream bigger.</span><span lang-as>আমি বিচাৰোঁ শিশুৱে ডাঙৰ সপোন দেখক।</span></li>
+          <li><span lang-en>We want students to build earlier.</span><span lang-as>আমি বিচাৰোঁ শিক্ষাৰ্থীয়ে আগতীয়াকৈ নিৰ্মাণ কৰক।</span></li>
+          <li><span lang-en>We want professionals to adapt faster.</span><span lang-as>আমি বিচাৰোঁ পেছাদাৰীসকলে সোনকালে খাপ খাব পাৰক।</span></li>
+          <li><span lang-en>We want creators to innovate fearlessly.</span><span lang-as>আমি বিচাৰোঁ সৃষ্টিকৰ্তাসকলে নিৰ্ভয়ে উদ্ভাৱন কৰক।</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BLOG PREVIEW ============ -->
+  <section id="blog-preview">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag" lang-en>From the blog</span>
+        <span class="tag" lang-as>ব্লগৰ পৰা</span>
+        <h2 lang-en>Notes on AI, open source, and building in Assam.</h2>
+        <h2 lang-as>AI, মুক্ত-উৎস আৰু অসমত নিৰ্মাণৰ ওপৰত টোকা।</h2>
+      </div>
+
+      <div class="blog-grid">
+        {
+          featured.map(([slug, { en, as }]) => {
+            const post = en || as;
+            return (
+              <a href={`/blog/${slug}`} class="blog-card reveal" data-cat={post.data.cat}>
+                <div class="thumb">
+                  <img src={post.data.image} alt="" loading="lazy" />
+                </div>
+                <div class="body">
+                  <div class="meta">
+                    <span class="cat" lang-en>{en?.data.catLabel || post.data.catLabel}</span>
+                    <span class="cat" lang-as>{as?.data.catLabel || post.data.catLabel}</span>
+                    <span lang-en>· {en?.data.readTime || post.data.readTime}</span>
+                    <span lang-as>· {as?.data.readTime || post.data.readTime}</span>
+                  </div>
+                  <h3 lang-en>{en?.data.title || post.data.title}</h3>
+                  <h3 lang-as>{as?.data.title || post.data.title}</h3>
+                  <p lang-en>{en?.data.excerpt || post.data.excerpt}</p>
+                  <p lang-as>{as?.data.excerpt || post.data.excerpt}</p>
+                  <span class="read">
+                    <span lang-en>Read article</span>
+                    <span lang-as>প্ৰবন্ধ পঢ়ক</span>
+                    <span class="arrow">→</span>
+                  </span>
+                </div>
+              </a>
+            );
+          })
+        }
+      </div>
+
+      <div style="margin-top:44px;text-align:center">
+        <a href="/blog" class="btn btn-outline">
+          <span lang-en>View all articles →</span>
+          <span lang-as>সকলো প্ৰবন্ধ চাওক →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" style="background: var(--surface-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="tag" lang-en>FAQ</span>
+        <span class="tag" lang-as>সামান্য প্ৰশ্ন</span>
+        <h2 lang-en>Questions we get asked a lot.</h2>
+        <h2 lang-as>যিসমূহ প্ৰশ্ন আমাক প্ৰায়ে সোধা হয়।</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>
+            <span lang-en>Do I need to know coding to contribute?</span>
+            <span lang-as>অৱদান দিবলৈ কোড জানিবলৈ লাগেনে?</span>
+          </summary>
+          <div class="faq-content">
+            <p lang-en>No. You can contribute by writing, translating, designing, testing, or just sharing ideas. If you are curious, there is a place for you.</p>
+            <p lang-as>নাই। আপুনি লিখি, অনুবাদ কৰি, ডিজাইন কৰি, পৰীক্ষা কৰি, বা কেৱল ধাৰণা শেয়াৰ কৰি অৱদান দিব পাৰে। যদি আপুনি কৌতূহলী, আপোনাৰ বাবে স্থান আছে।</p>
+          </div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>
+            <span lang-en>Is everything really free?</span>
+            <span lang-as>সকলো সঁচাকৈ বিনামূলীয়া নেকি?</span>
+          </summary>
+          <div class="faq-content">
+            <p lang-en>Yes. Every project, blog post, and resource is free and open source. We believe knowledge should be accessible to everyone.</p>
+            <p lang-as>হয়। প্ৰতিটো প্ৰকল্প, ব্লগ পোস্ট, আৰু সম্পদ বিনামূলীয়া আৰু মুক্ত-উৎস। আমি বিশ্বাস কৰোঁ জ্ঞান সকলোৰে বাবে সহজলভ্য হোৱা উচিত।</p>
+          </div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>
+            <span lang-en>How does AI help here?</span>
+            <span lang-as>AI ইয়াত কেনেকৈ সহায় কৰে?</span>
+          </summary>
+          <div class="faq-content">
+            <p lang-en>AI helps us translate content faster, understand codebases quicker, generate documentation, and make learning personalized. It lowers the barrier for everyone.</p>
+            <p lang-as>AI আমাক বিষয়বস্তু দ্ৰুত অনুবাদ কৰাত, কোডবেইচ সোনকালে বুজিবলৈ, ডকুমেণ্টেচন সৃষ্টি কৰাত, আৰু শিক্ষণ ব্যক্তিগত কৰাত সহায় কৰে। ই সকলোৰে বাবে বাধা কমায়।</p>
+          </div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>
+            <span lang-en>Can I use these projects for my own work?</span>
+            <span lang-as>মই এইসমূহ প্ৰকল্প নিজৰ কামৰ বাবে ব্যৱহাৰ কৰিব পাৰোনে?</span>
+          </summary>
+          <div class="faq-content">
+            <p lang-en>Absolutely. All our projects are MIT-licensed. You can use, modify, and distribute them freely — just give credit where it is due.</p>
+            <p lang-as>অৱশ্যই। আমাৰ সকলো প্ৰকল্প MIT-লাইচেন্সৰ অন্তৰ্গত। আপুনি স্বাধীনভাৱে ব্যৱহাৰ, পৰিৱৰ্তন, আৰু বণ্টন কৰিব পাৰে — কেৱল যোগ্য কৃতিত্ব দিয়ক।</p>
+          </div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>
+            <span lang-en>I am not from Assam. Can I still contribute?</span>
+            <span lang-as>মই অসমৰ পৰা নহওঁ। তথাপিও অৱদান দিব পাৰিমনে?</span>
+          </summary>
+          <div class="faq-content">
+            <p lang-en>Of course. We welcome contributors from everywhere. Our focus is on Assam, but our work is global. If you share our mission, you belong here.</p>
+            <p lang-as>অৱশ্যই। আমি যিকোনো ঠাইৰ অৱদানকাৰীক সাদৰেৰে আদৰ কৰোঁ। আমাৰ মনোযোগ অসমত, কিন্তু আমাৰ কাম বিশ্বব্যাপী। যদি আপুনি আমাৰ লক্ষ্য ভাগ কৰে, আপুনি ইয়াত আপোনজন।</p>
+          </div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>
+            <span lang-en>How do I report a bug or suggest an idea?</span>
+            <span lang-as>এটা bug প্ৰতিবেদন কৰা বা এটা ধাৰণা প্ৰস্তাৱ কৰা কেনেকৈ কৰিব?</span>
+          </summary>
+          <div class="faq-content">
+            <p lang-en>Open a GitHub Issue on any repository, or drop a message in our Telegram group. We read everything and respond quickly.</p>
+            <p lang-as>যিকোনো repositoryত এটা GitHub Issue খোলক, বা আমাৰ Telegram গ্ৰুপত বাৰ্তা পঠাওক। আমি সকলো পঢ়োঁ আৰু দ্ৰুত উত্তৰ দিওঁ।</p>
+          </div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>
+            <span lang-en>Do you offer mentorship or workshops?</span>
+            <span lang-as>আপুনি mentorship বা কৰ্মশালা দিয়ে নেকি?</span>
+          </summary>
+          <div class="faq-content">
+            <p lang-en>Yes. We host online workshops, mentorship sessions, and coding bootcamps regularly. Join our Telegram group to stay updated.</p>
+            <p lang-as>হয়। আমি নিয়মীয়াকৈ অনলাইন কৰ্মশালা, মেণ্টৰশ্বিপ সেচন, আৰু কোডিং বুটক্যাম্প পৰিচালনা কৰোঁ। আপডেট পাবলৈ আমাৰ Telegram গ্ৰুপত যোগ দিয়ক।</p>
+          </div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>
+            <span lang-en>What is the best way to start?</span>
+            <span lang-as>আৰম্ভ কৰাৰ আটাইতকৈ ভাল পথ কি?</span>
+          </summary>
+          <div class="faq-content">
+            <p lang-en>Start small. Read a blog post, try a live project, join our Telegram group, and ask questions. Curiosity is all you need.</p>
+            <p lang-as>সৰুকৈ আৰম্ভ কৰক। এটা ব্লগ পোস্ট পঢ়ক, এটা চলিত প্ৰকল্প চাওক, আমাৰ Telegram গ্ৰুপত যোগ দিয়ক, আৰু প্ৰশ্ন সোধক। কৌতূহলেই আপোনাৰ বাবে যথেষ্ট।</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JOIN STRIP ============ -->
+  <section class="join-strip" id="join">
+    <div class="wrap">
+      <h2 lang-en>Let's learn together. Let's build together.</h2>
+      <h2 lang-as>আহক একেলগে শিকোঁ। আহক একেলগে নিৰ্মাণ কৰোঁ।</h2>
+      <p lang-en>Whether it's your first line of code or your fiftieth open-source contribution — you're welcome here.</p>
+      <p lang-as>আপোনাৰ প্ৰথম code হওক বা পঞ্চাশতম মুক্ত-উৎস অৱদান — আপুনি ইয়াত সাদৰত।</p>
+      <div class="join-links">
+        <a href="https://www.facebook.com/groups/1556385872564016/" target="_blank" rel="noopener" class="fb">
+          <span lang-en><img src="/assets/icons/facebook.svg" alt="" width="18" height="18" /> Facebook Group</span>
+          <span lang-as><img src="/assets/icons/facebook.svg" alt="" width="18" height="18" /> ফেচবুক গ্ৰুপ</span>
+        </a>
+        <a href="https://t.me/AxomiyaITLabs" target="_blank" rel="noopener" class="tg">
+          <span lang-en><img src="/assets/icons/telegram.svg" alt="" width="18" height="18" /> Telegram Community</span>
+          <span lang-as><img src="/assets/icons/telegram.svg" alt="" width="18" height="18" /> টেলিগ্ৰাম সম্প্ৰদায়</span>
+        </a>
+        <a href="#discord" target="_blank" rel="noopener" class="discord">
+          <span lang-en><img src="/assets/icons/discord.svg" alt="" width="18" height="18" /> Discord Server</span>
+          <span lang-as><img src="/assets/icons/discord.svg" alt="" width="18" height="18" /> ডিচক'ৰ্ড চাৰ্ভাৰ</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

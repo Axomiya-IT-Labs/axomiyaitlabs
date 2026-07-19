@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 512 512"
+     fill="none">
+
+  <defs>
+    <linearGradient id="brand" x1="64" y1="64" x2="448" y2="448" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <circle cx="256" cy="256" r="240"
+          fill="#07111F"
+          stroke="url(#brand)"
+          stroke-width="8"/>
+
+  <!-- Stylized A -->
+  <path
+    d="M256 90
+       L356 388
+       H315
+       L288 312
+       H224
+       L197 388
+       H156
+       L256 90Z"
+    fill="white"/>
+
+  <!-- Blue right side -->
+  <path
+    d="M256 90
+       L356 388
+       H315
+       L256 195Z"
+    fill="url(#brand)"/>
+
+  <!-- Inner cut -->
+  <polygon
+    points="256,180 228,268 284,268"
+    fill="#07111F"/>
+
+  <!-- Circuit -->
+  <g stroke="url(#brand)" stroke-width="6" stroke-linecap="round">
+    <line x1="292" y1="165" x2="390" y2="165"/>
+    <line x1="298" y1="205" x2="420" y2="205"/>
+    <line x1="304" y1="245" x2="390" y2="245"/>
+  </g>
+
+  <g fill="url(#brand)">
+    <circle cx="398" cy="165" r="7"/>
+    <circle cx="428" cy="205" r="7"/>
+    <circle cx="398" cy="245" r="7"/>
+  </g>
+
+  <!-- Code brackets -->
+  <path
+    d="M145 238
+       L120 256
+       L145 274"
+    stroke="url(#brand)"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+
+  <path
+    d="M367 238
+       L392 256
+       L367 274"
+    stroke="url(#brand)"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+</svg>
