@@ -74,7 +74,7 @@ const filters = [
             return (
               <a href={`/blog/${slug}`} class="blog-card reveal" data-cat={post.data.cat}>
                 <div class="thumb">
-                  <img src={post.data.image} alt="" loading="lazy" />
+                  <img src={post.data.image} alt="" loading="lazy" decoding="async" />
                 </div>
                 <div class="body">
                   <div class="meta">

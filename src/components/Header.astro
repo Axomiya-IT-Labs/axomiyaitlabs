@@ -20,6 +20,9 @@ const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
         alt="Axomiya IT Labs"
         width="160"
         height="40"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
         onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'mark-fallback',textContent:'AIL'}))"
       />
     </a>

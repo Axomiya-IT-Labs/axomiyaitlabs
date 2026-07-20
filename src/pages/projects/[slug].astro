@@ -84,7 +84,7 @@ const faqItemsForLd = projectFaq.map(item => ({
 
   {project.image && (
     <div class="project-hero-image">
-      <img src={project.image} alt={project.name.en} loading="lazy" />
+      <img src={project.image} alt={project.name.en} loading="lazy" decoding="async" />
     </div>
   )}
 

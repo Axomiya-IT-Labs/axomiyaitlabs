@@ -35,7 +35,7 @@ const { item } = Astro.props;
 
   {item.image && (
     <div class="project-hero-image">
-      <img src={item.image} alt={item.alt} loading="lazy" />
+      <img src={item.image} alt={item.alt} loading="lazy" decoding="async" />
     </div>
   )}
 
