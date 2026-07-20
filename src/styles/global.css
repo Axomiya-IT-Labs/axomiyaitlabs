@@ -203,19 +203,20 @@ button {
   top: var(--header-h);
   left: 0;
   right: 0;
-  bottom: 0;
-  background: linear-gradient(180deg, var(--navy-900), var(--navy-950)), var(--navy-900);
+  height: calc(100vh - var(--header-h));
+  background: var(--navy-900);
   flex-direction: column;
-  padding: 18px;
-  gap: 6px;
-  transform: translateY(-8px);
+  padding: 24px 18px;
+  gap: 8px;
+  transform: translateY(-12px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: transform 0.24s var(--ease), opacity 0.24s var(--ease), visibility 0.24s var(--ease);
   overflow-y: auto;
-  z-index: 999;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 999999;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 .main-nav.is-open {
@@ -416,9 +417,11 @@ button {
 /* ============ Hero ============ */
 .hero {
   background:
-    radial-gradient(circle at 88% 18%, rgba(255, 153, 0, 0.16), transparent 28%),
-    radial-gradient(circle at 18% 16%, rgba(20, 110, 180, 0.23), transparent 30%),
-    linear-gradient(135deg, #0f141f, #182234 46%, #233044);
+    linear-gradient(135deg, rgba(15, 20, 31, 0.58) 0%, rgba(24, 34, 52, 0.52) 50%, rgba(35, 48, 68, 0.6) 100%),
+    radial-gradient(circle at 88% 18%, rgba(255, 153, 0, 0.22), transparent 38%),
+    radial-gradient(circle at 18% 16%, rgba(20, 110, 180, 0.28), transparent 38%),
+    url("/assets/images/hero-background.webp") center / cover no-repeat,
+    #0f141f;
   padding: 78px 0 68px;
   border-bottom: 1px solid rgba(15, 23, 42, 0.14);
   position: relative;
@@ -1278,23 +1281,48 @@ section {
 
 .join-links {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .join-links a {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
   border: 1px solid var(--border);
-  padding: 12px 20px;
+  padding: 12px 22px;
   border-radius: var(--radius);
   font-weight: 600;
   font-size: 0.9rem;
   transition: all 0.25s var(--ease);
   background: var(--white);
   color: var(--text-primary);
+  text-decoration: none;
+}
+
+.join-links a span[lang-en],
+.join-links a span[lang-as],
+.hero-cta a span[lang-en],
+.hero-cta a span[lang-as],
+.join-links a.fb span,
+.join-links a.tg span,
+.join-links a.discord span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.join-links a img,
+.hero-cta a img,
+.join-links a svg,
+.hero-cta a svg {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .join-links a:hover {
@@ -2412,6 +2440,7 @@ footer {
     align-items: center;
     padding: 0;
     gap: 4px;
+    height: auto;
     transform: none;
     opacity: 1;
     visibility: visible;
@@ -2421,6 +2450,7 @@ footer {
     inset: auto;
     border-top: none;
     z-index: auto;
+    box-shadow: none;
   }
   .main-nav a {
     width: auto;

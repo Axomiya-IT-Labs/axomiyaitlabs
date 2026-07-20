@@ -31,27 +31,62 @@
     if (btn) setLang(btn.dataset.lang!);
   });
 
-  /* ---------- Mobile nav ---------- */
-  const navToggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
-  const mainNav = document.querySelector<HTMLElement>('.main-nav');
-  if (navToggle && mainNav) {
-    navToggle.addEventListener('click', () => {
+  /* ---------- Mobile nav with auto-close on link click ---------- */
+  function initMobileNav() {
+    const navToggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+    const mainNav = document.querySelector<HTMLElement>('.main-nav');
+    if (!navToggle || !mainNav) return;
+
+    function closeNav() {
+      mainNav!.classList.remove('is-open');
+      navToggle!.classList.remove('is-open');
+      navToggle!.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       const open = mainNav.classList.toggle('is-open');
       navToggle.classList.toggle('is-open', open);
       navToggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
     });
-    mainNav.querySelectorAll('a').forEach((a) =>
-      a.addEventListener('click', () => {
-        mainNav.classList.remove('is-open');
-        navToggle.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      })
-    );
+
+    // Dismiss automatically when clicking ANY menu link
+    mainNav.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('a')) {
+        closeNav();
+      }
+    });
+
+    // Dismiss when clicking outside the navbar
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!mainNav.contains(target) && !navToggle.contains(target) && mainNav.classList.contains('is-open')) {
+        closeNav();
+      }
+    });
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mainNav.classList.contains('is-open')) {
+        closeNav();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileNav);
+  } else {
+    initMobileNav();
   }
 
   /* ---------- Marquee: duplicate track for seamless loop ---------- */
   document.querySelectorAll('.marquee-track').forEach((track) => {
-    track.innerHTML += track.innerHTML;
+    if (track.children.length && track.children.length < 20) {
+      track.innerHTML += track.innerHTML;
+    }
   });
 
   /* ---------- Reveal-on-scroll ---------- */
