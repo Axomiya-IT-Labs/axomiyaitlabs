@@ -6,7 +6,7 @@ date: "2026-07-12"
 cat: "guide"
 catLabel: "Guide"
 readTime: "8 min read"
-image: "/assets/blog/what-is-ai.png"
+image: "/assets/blog/what-is-ai.webp"
 ---
 
 Artificial Intelligence is not magic — it is math, data, and code working together. At its simplest, AI is a system that learns patterns from data and makes predictions or decisions. Every time you ask a smartphone assistant for directions, or when a website recommends a product, you are using AI.

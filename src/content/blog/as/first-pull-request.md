@@ -6,7 +6,7 @@ date: "2026-07-05"
 cat: "tutorial"
 catLabel: "টিউটৰিয়েল"
 readTime: "১০ মিনিটৰ পঠন"
-image: "/assets/blog/first-pull-request.png"
+image: "/assets/blog/first-pull-request.webp"
 ---
 
 আপোনাৰ প্ৰথমটো পুল ৰিকুৱেষ্ট (pull request) কৰাটো পাহাৰ বগোৱাৰ দৰেই কঠিন যেন লাগিব পাৰে — যেতিয়ালৈকে আপুনি আচলতে কামটো নকৰে। এই নিৰ্দেশিকাটোৱে আপোনাক এটা গিটহাব (GitHub) একাউণ্ট খোলাৰ পৰা আৰম্ভ কৰি 'Merge' বুটামটো টিপালৈকে প্ৰতিটো পদক্ষেপৰ মাজেৰে লৈ যাব।

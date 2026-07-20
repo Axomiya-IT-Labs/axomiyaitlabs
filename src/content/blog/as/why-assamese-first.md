@@ -6,7 +6,7 @@ date: "2026-06-28"
 cat: "story"
 catLabel: "কাহিনী"
 readTime: "৫ মিনিটৰ পঠন"
-image: "/assets/blog/why-assamese-first.png"
+image: "/assets/blog/why-assamese-first.webp"
 ---
 
 প্ৰযুক্তিৰ বেছিভাগ সমল ইংৰাজীত উপলব্ধ। অসমীয়া আই টি লেবছত আমি বিশ্বাস কৰোঁ যে প্ৰযুক্তিক সহজলভ্য কৰাৰ শ্ৰেষ্ঠ উপায় হ'ল মানুহে যিটো ভাষাত চিন্তা কৰে, সেই ভাষাতেই আৰম্ভ কৰা।

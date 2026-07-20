@@ -2,20 +2,37 @@
 
 Welcome to **Axomiya IT Labs**! We are an open-source initiative dedicated to making AI, software engineering, and digital literacy accessible to everyone in Assam — in both **Assamese** and **English**.
 
-Whether you are a seasoned software engineer, a student writing your first line of code, a translator, a designer, or an educator, your contributions are valued and needed here.
+Whether you are a software engineer, a student writing your first line of code, a translator, a designer, or an educator, your contributions are valued and needed here!
 
 ---
 
-## 🚀 How to Get Started
+## 🌟 No Tech Background? No Problem!
 
-### 1. Join Our Onboarding Channels
-* **Telegram Community:** [t.me/AxomiyaITLabs](https://t.me/AxomiyaITLabs)
-* **Facebook Group:** [Axomiya IT Labs Community](https://www.facebook.com/groups/1556385872564016/)
-* **GitHub Organization:** [github.com/Axomiya-IT-Labs](https://github.com/Axomiya-IT-Labs)
+You can contribute in many ways without writing code:
+- **Translate Articles & Docs:** Help translate English guides into natural Assamese.
+- **Report Bugs & Typos:** Notice a broken link or a spelling typo? Open an issue on GitHub.
+- **Design Graphics:** Create blog headers, icons, or social media graphics.
+- **Share Ideas:** Join our Telegram group and tell us what tools Assam needs!
 
-### 2. Standard Development Workflow
+---
 
-1. **Fork the Repository:** Create a personal fork of the repository on GitHub.
+## 💡 Two Easy Ways to Contribute
+
+### Option 1: Directly on GitHub.com (No Terminal Needed!) 🌐
+*Best for writers, translators, and quick fixers!*
+1. Go to our repository on GitHub: `https://github.com/Axomiya-IT-Labs/axomiya-it-labs`
+2. Navigate to the file you want to edit (e.g. `src/content/blog/as/what-is-ai.md`).
+3. Click the **Pencil Icon (✏️)** at the top right to edit the file directly in your browser.
+4. Make your changes or translation fixes.
+5. Click **Commit changes...** at the top right and select **Propose changes**.
+6. Click **Create pull request**! Maintainers will review and merge it for you.
+
+---
+
+### Option 2: Full Development Workflow 💻
+*Best for developers adding features or UI changes!*
+
+1. **Fork the Repository:** Click **Fork** at the top right of the GitHub repo.
 2. **Clone your Fork:**
    ```bash
    git clone https://github.com/YOUR-USERNAME/axomiya-it-labs.git
@@ -25,7 +42,7 @@ Whether you are a seasoned software engineer, a student writing your first line 
    ```bash
    git checkout -b feature/your-feature-name
    ```
-4. **Make Your Changes & Test:**
+4. **Install & Run Dev Server:**
    ```bash
    npm install
    npm run dev
@@ -33,44 +50,44 @@ Whether you are a seasoned software engineer, a student writing your first line 
 5. **Commit with Clear Messages:**
    ```bash
    git add .
-   git commit -m "feat(scope): concise description of your change"
+   git commit -m "feat(blog): update Assamese translation"
    ```
 6. **Push and Open a Pull Request:**
    ```bash
    git push origin feature/your-feature-name
    ```
-   Open a Pull Request (PR) against the `main` branch of the official repository.
+   Open a Pull Request against the `main` branch.
 
 ---
 
-## 💡 Contribution Pathways
+## 🛣️ Contribution Pathways
 
 ### 👨‍💻 Engineering & Code
-- **Build Open-Source Tools:** Help us build AI web apps, automation CLI tools, and learning portals.
-- **Fix Bugs & Improve Performance:** Check our GitHub Issues tab for bugs or optimization tasks.
-- **Refine UI/UX:** Enhance mobile responsiveness, accessibility (a11y), and animations.
+- **Build Open-Source Tools:** Help build AI web apps, automation scripts, and portals.
+- **Fix Bugs & Improve Performance:** Check GitHub Issues labeled `good first issue`.
+- **Refine UI/UX:** Enhance mobile responsiveness, accessibility, and smooth animations.
 
 ### ✍️ Technical Writing & Translation
 - **Publish Articles:** Write tutorials, AI guides, or tech stories for our [Blog](blog.md).
-- **Translate Documentation:** Help translate technical guides, UI strings, and README files into clean Assamese.
-- **Language Quality Standards:** Assamese technical content must be written in **pure Assamese script (অসমীয়া)** with proper grammar. Standard technical terms like *Git*, *Docker*, *Astro*, or *AI* can remain in English within Assamese text.
+- **Translate Documentation:** Help translate technical guides into pure Assamese.
+- **Language Quality Standards:** Assamese content must be in **pure Assamese script (অসমীয়া)** with proper grammar. Standard technical terms like *Git*, *Docker*, *Astro*, or *AI* can stay in English.
 
 ### 🎨 Design & Media
-- Create article banners (1200×630 PNG), SVG icons, and visual graphics.
+- Create article banners (1200×630 PNG/WebP), SVG icons, and visual graphics.
 - Design community banners and social media assets.
 
-### 🧪 QA & Community Testing
-- Test live applications across various screen sizes and report bugs via GitHub Issues.
-- Test regional language switching and verify formatting on low-bandwidth connections.
+### 🧪 QA & Testing
+- Test live web applications across mobile and desktop devices.
+- Report bugs or layout glitches on GitHub.
 
 ---
 
 ## 📜 Code of Conduct & Values
 
-1. **Be Welcoming and Inclusive:** Encourage new learners and support first-time open-source contributors.
-2. **Respectful Communication:** Treat all members with respect during discussions, code reviews, and issue threads.
-3. **Strict Non-Commercial Policy:** Axomiya IT Labs is a non-commercial, community-driven initiative. Do not use community channels for unauthorized business promotion or paid service advertisements.
-4. **Zero Tolerance for Harassment:** Personal attacks, hate speech, and exclusionary conduct will result in immediate removal from all organization spaces.
+1. **Be Welcoming and Inclusive:** Support new learners and first-time contributors.
+2. **Respectful Communication:** Treat all members with respect during code reviews and discussions.
+3. **Non-Commercial Policy:** Axomiya IT Labs is a non-commercial, open community. No unauthorized advertisements.
+4. **Zero Tolerance for Harassment:** Personal attacks or exclusionary conduct will result in immediate removal.
 
 ---
 
@@ -80,10 +97,10 @@ Whether you are a seasoned software engineer, a student writing your first line 
 *A: Not at all! We welcome contributors of all backgrounds — students, teachers, designers, writers, and hobbyists.*
 
 **Q: What if I am making my very first Git Pull Request?**  
-*A: You are in the right place! Reach out in our Telegram channel, and our community mentors will walk you through your first PR step by step.*
+*A: You are in the right place! Join our Telegram group, and our community mentors will walk you through your first PR step by step.*
 
-**Q: How are PRs reviewed?**  
-*A: Organization maintainers review PRs regularly. We provide constructive feedback and assist with revisions to get your code merged smoothly.*
+**Q: Can I use AI tools like ChatGPT or Gemini to help write or translate?**  
+*A: Absolutely! We encourage using AI as your daily working buddy. Just review the output to make sure it's accurate and reads naturally in Assamese or English.*
 
 ---
 

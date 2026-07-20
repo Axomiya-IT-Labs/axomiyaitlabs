@@ -6,7 +6,7 @@ date: "2026-06-20"
 cat: "guide"
 catLabel: "Guide"
 readTime: "10 min read"
-image: "/assets/blog/ai-daily-life-future.png"
+image: "/assets/blog/ai-daily-life-future.webp"
 ---
 
 You do not need to be a developer to use AI. In fact, AI is already helping millions of people in their daily lives — from organizing schedules to learning new skills. The difference today is that these tools are now free, available in Assamese, and powerful enough to actually help.

@@ -6,7 +6,7 @@ date: "2026-06-10"
 cat: "news"
 catLabel: "Announcement"
 readTime: "4 min read"
-image: "/assets/blog/introducing-ail.png"
+image: "/assets/blog/introducing-ail.webp"
 ---
 
 Axomiya IT Labs is an open-source initiative built for Assam, by Assamese developers and enthusiasts. Our mission is simple: make artificial intelligence, software development, and open-source contribution accessible to everyone in the region, regardless of their English proficiency or technical background.

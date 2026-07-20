@@ -11,7 +11,17 @@ Axomiya IT Labs is an open-source initiative dedicated to bridging the digital d
 
 ---
 
-## ⚡ Quick Start
+## 🌟 Anyone Can Contribute — No Coding Required!
+
+You do **NOT** need to be a software developer to contribute to Axomiya IT Labs. We welcome:
+- ✍️ **Translators & Writers:** Translate documentation or write beginner AI guides.
+- 🎨 **Designers & Artists:** Create UI mockups, icons, and blog cover illustrations.
+- 🧪 **Testers & QA:** Test apps on mobile devices and report bugs or translation typos.
+- 👨‍💻 **Developers:** Build open-source tools, optimize code, or add new features.
+
+---
+
+## ⚡ Quick Start (For Developers)
 
 Get the development environment up and running locally in under two minutes:
 
@@ -41,14 +51,16 @@ The application runs locally at `http://localhost:4321`.
 ```
 axomiya-it-labs/
 ├── public/
-│   └── assets/
-│       ├── blog/           # Blog cover graphics (1200x630 PNG)
-│       ├── build/          # Build category media (Strict separation)
-│       │   ├── main/       # Overview thumbnails used on homepage & index
-│       │   └── sub/        # Detail cover images for /what-we-build/[slug]
-│       ├── icons/          # SVGs and UI iconography
-│       ├── images/         # Static page header banners and site branding
-│       └── projects/       # Screenshots and project assets
+│   ├── assets/
+│   │   ├── blog/           # Blog cover graphics (1200x630 PNG or WebP)
+│   │   ├── build/          # Build category media (Strict separation)
+│   │   │   ├── main/       # Overview thumbnails used on homepage & /what-we-build
+│   │   │   └── sub/        # Detail cover images for /what-we-build/[slug]
+│   │   ├── icons/          # SVGs and UI iconography
+│   │   ├── images/         # Static page header banners and site branding
+│   │   └── projects/       # Screenshots and project assets
+│   ├── robots.txt          # Search engine crawler instructions
+│   └── sitemap.xml         # XML Sitemap
 ├── src/
 │   ├── components/         # Modular Astro UI components (Header, Footer, etc.)
 │   ├── content/            # Bilingual Markdown Content Collections
@@ -59,9 +71,13 @@ axomiya-it-labs/
 │   ├── data/               # Structured TS data (builds.ts, projects.ts, faq.ts)
 │   ├── layouts/            # BaseLayout.astro with dynamic SEO & schema metadata
 │   ├── pages/              # Static & dynamic routes (Astro file-based routing)
+│   │   ├── blog/           # Blog index & [slug].astro renderer
+│   │   ├── projects/       # Projects index & [slug].astro dynamic coming-soon pages
+│   │   ├── what-we-build/  # Build index & [slug].astro category detail pages
+│   │   └── sitemap.xml.ts  # Dynamic XML sitemap generator endpoint
 │   └── styles/             # Global CSS design system and variables
-├── blog.md                 # Contributor guide for blog writing
-├── contribute.md           # Comprehensive community onboarding & guidelines
+├── blog.md                 # Step-by-step authoring guide for bilingual blog posts
+├── contribute.md           # Community onboarding, GitHub web editor guide & guidelines
 └── README.md               # Repository documentation & architecture guide
 ```
 
@@ -72,9 +88,9 @@ axomiya-it-labs/
 Our blog uses Astro Content Collections with parallel language structures (`en/` and `as/`).
 
 ### Step 1: Upload the Article Banner
-Save a high-resolution 1200×630 PNG image to:
+Save a 1200×630 image (WebP or PNG) to:
 ```
-public/assets/blog/your-article-slug.png
+public/assets/blog/your-article-slug.webp
 ```
 
 ### Step 2: Create the English Edition
@@ -88,7 +104,7 @@ date: "2026-07-20"
 cat: "guide"
 catLabel: "Guide"
 readTime: "5 min read"
-image: "/assets/blog/your-article-slug.png"
+image: "/assets/blog/your-article-slug.webp"
 ---
 
 Write your article in clear, accessible English markdown...
@@ -107,7 +123,7 @@ date: "2026-07-20"
 cat: "guide"
 catLabel: "নিৰ্দেশিকা"
 readTime: "৫ মিনিটৰ পঠন"
-image: "/assets/blog/your-article-slug.png"
+image: "/assets/blog/your-article-slug.webp"
 ---
 
 প্ৰবন্ধটো সম্পূৰ্ণ অসমীয়াত লিখক...
@@ -127,7 +143,7 @@ npm run dev
 # Commit and push your changes
 git add src/content/blog/en/your-article-slug.md \
         src/content/blog/as/your-article-slug.md \
-        public/assets/blog/your-article-slug.png
+        public/assets/blog/your-article-slug.webp
 git commit -m "feat(blog): add bilingual post - your-article-slug"
 git push origin feature/your-branch-name
 ```
@@ -160,7 +176,7 @@ git push origin feature/your-branch-name
      tags: ['AI', 'Open Source', 'Education'],
    }
    ```
-3. The project will automatically populate on the `/projects` page.
+3. The project will automatically populate on `/projects` and generate a dedicated page at `/projects/project-name`.
 
 ---
 
@@ -168,7 +184,7 @@ git push origin feature/your-branch-name
 
 To preserve visual consistency, observe strict asset placement:
 
-* **Page Banners (`public/assets/images/`):** 1200×400 PNG (`about-header.png`, `build-header.png`, `contribute-header.png`, `projects-header.png`)
+* **Page Banners (`public/assets/images/`):** 1200×400 WebP/PNG (`about-header.png`, `build-header.png`, `contribute-header.png`, `projects-header.png`)
 * **Build Category Images:**
   * Landing & Main listing (`/what-we-build`): `public/assets/build/main/`
   * Subcategory Detail pages (`/what-we-build/[slug]`): `public/assets/build/sub/`
@@ -177,11 +193,11 @@ To preserve visual consistency, observe strict asset placement:
 
 ## 🤝 Community & Contribution
 
-We welcome code contributions, technical writing, design, translation, and issue reports from everyone — regardless of experience level.
+We welcome code contributions, technical writing, design, translation, and bug reports from everyone.
 
 - Read our detailed [Contribution Guidelines](contribute.md).
-- Learn how to structure posts in the [Blog Writing Guide](blog.md).
-- Adhere to our community standards outlined in the Code of Conduct.
+- Learn how to publish articles in our [Blog Guide](blog.md).
+- Non-coders can contribute directly via the **GitHub Browser Editor** (pencil icon ✏️).
 
 ---
 
@@ -191,7 +207,7 @@ This project is open source and released under the [MIT License](LICENSE).
 
 ---
 
-<p center align="center">
+<p align="center">
 Made with ❤️ in Assam 🇮🇳 by the <b>Axomiya IT Labs</b> community.<br/>
 <i>Empowering creators through AI and open tech. No one left behind.</i>
 </p>

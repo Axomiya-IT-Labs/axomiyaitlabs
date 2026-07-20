@@ -6,7 +6,7 @@ date: "2026-06-02"
 cat: "guide"
 catLabel: "Guide"
 readTime: "7 min read"
-image: "/assets/blog/open-source-daily-life.png"
+image: "/assets/blog/open-source-daily-life.webp"
 ---
 
 Open source means anyone can see, use, modify, and share the code behind a tool. Think of it like a free recipe book: you can cook the dish, change the ingredients, or teach someone else to make it better. When a project is open source, its source code is publicly available — usually on GitHub — and anyone can contribute.

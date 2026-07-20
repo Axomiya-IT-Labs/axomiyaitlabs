@@ -6,7 +6,7 @@ date: "2026-06-28"
 cat: "story"
 catLabel: "Story"
 readTime: "5 min read"
-image: "/assets/blog/why-assamese-first.png"
+image: "/assets/blog/why-assamese-first.webp"
 ---
 
 Most technology content is in English. That is fine for people who are comfortable with English, but for millions of Assamese speakers, that creates a barrier before they even open a laptop. At Axomiya IT Labs, we believe the best way to make technology accessible is to start in the language people already think in.

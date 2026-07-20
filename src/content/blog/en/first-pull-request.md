@@ -6,7 +6,7 @@ date: "2026-07-05"
 cat: "tutorial"
 catLabel: "Tutorial"
 readTime: "10 min read"
-image: "/assets/blog/first-pull-request.png"
+image: "/assets/blog/first-pull-request.webp"
 ---
 
 Making your first pull request feels like climbing a mountain — until you actually do it. This tutorial walks you through every single step, from creating a GitHub account to hitting the Merge button. We will keep it simple, practical, and beginner-friendly.
