@@ -14,6 +14,31 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: 'axomiya-it-labs',
+    name: { en: `Axomiya IT Labs Community Website`, as: `Axomiya IT Labs সম্প্ৰদায় ৱেবছাইট` },
+    tagline: {
+      en: `The official open-source home for Axomiya IT Labs, built for community learning, projects, blogs, and contribution pathways.`,
+      as: `Axomiya IT Labs ৰ আনুষ্ঠানিক মুক্ত-উৎস ঘৰ, সম্প্ৰদায়ৰ শিক্ষা, প্ৰকল্প, ব্লগ আৰু অৱদানৰ পথৰ বাবে নিৰ্মিত।`,
+    },
+    purpose: {
+      en: `For learners, contributors, and community members to discover Axomiya IT Labs, explore projects, and start contributing.`,
+      as: `শিক্ষাৰ্থী, অৱদানকাৰী আৰু সম্প্ৰদায়ৰ সদস্যসকলৰ বাবে Axomiya IT Labs চিনা, প্ৰকল্পসমূহ অন্বেষণ কৰা আৰু অৱদান আৰম্ভ কৰাৰ স্থান।`,
+    },
+    features: {
+      en: `Bilingual pages, project directory, contribution guide, blog content, community links, and open-source documentation.`,
+      as: `দ্বিভাষিক পৃষ্ঠা, প্ৰকল্প ডাইৰেক্টৰী, অৱদান নিৰ্দেশিকা, ব্লগ সমল, সম্প্ৰদায়ৰ লিংক আৰু মুক্ত-উৎস নথিপত্ৰ।`,
+    },
+    future: {
+      en: `Continue improving accessibility, Assamese content, contributor onboarding, and community-driven project showcases.`,
+      as: `সহজলভ্যতা, অসমীয়া সমল, অৱদানকাৰী আৰম্ভণি আৰু সম্প্ৰদায়-চালিত প্ৰকল্প প্ৰদৰ্শন উন্নত কৰি যোৱা।`,
+    },
+    website: 'https://axomiya-it-labs.github.io',
+    github: 'https://github.com/Axomiya-IT-Labs/axomiyaitlabs',
+    status: 'live',
+    tags: ['Community', 'Open Source'],
+    image: '/assets/projects/axomiya-it-labs.webp',
+  },
+  {
     slug: 'whatafter12',
     name: { en: `WhatAfter12 - Career Clarity Guidance`, as: `WhatAfter12 - কেৰিয়াৰ স্পষ্ট নিৰ্দেশিকা` },
     tagline: {

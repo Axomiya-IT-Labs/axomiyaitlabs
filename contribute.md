@@ -91,6 +91,12 @@ You can contribute in many ways without writing code:
 
 ---
 
+## Open Source & Community Standards
+
+[Axomiya IT Labs](https://axomiya-it-labs.github.io) is a non-commercial, open-source community. Please do not use community spaces for commercial advertisements or business promotions. For business collaborations, sponsorships, or official inquiries, please speak directly with community admins on [Telegram](https://t.me/AxomiyaITLabs).
+
+---
+
 ## ❓ Frequently Asked Questions
 
 **Q: Do I need a computer science degree to contribute?**  

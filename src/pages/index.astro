@@ -19,6 +19,21 @@ for (const post of posts) {
 const featured = Array.from(postsBySlug.entries())
   .sort((a, b) => new Date(b[1].en?.data.date || b[1].as?.data.date || '').getTime() - new Date(a[1].en?.data.date || a[1].as?.data.date || '').getTime())
   .slice(0, 3);
+
+const audienceLinks = [
+  { en: 'Kids', as: 'শিশু', href: '/contribute#students-beginners' },
+  { en: 'Students', as: 'শিক্ষাৰ্থী', href: '/contribute#students-beginners' },
+  { en: 'Teachers', as: 'শিক্ষক', href: '/contribute#teachers-parents-mentors' },
+  { en: 'Parents', as: 'অভিভাৱক', href: '/contribute#teachers-parents-mentors' },
+  { en: 'Developers', as: 'ডেভেলপাৰ', href: '/contribute#developers-engineers' },
+  { en: 'Entrepreneurs', as: 'উদ্যোগী', href: '/contribute#professionals-freelancers-entrepreneurs' },
+  { en: 'Freelancers', as: 'ফ্ৰীলেন্সাৰ', href: '/contribute#professionals-freelancers-entrepreneurs' },
+  { en: 'Job Seekers', as: 'চাকৰি প্ৰাৰ্থী', href: '/contribute#students-beginners' },
+  { en: 'Govt. Employees', as: 'চৰকাৰী কৰ্মচাৰী', href: '/contribute#professionals-freelancers-entrepreneurs' },
+  { en: 'Small Businesses', as: 'ক্ষুদ্ৰ ব্যৱসায়ী', href: '/contribute#professionals-freelancers-entrepreneurs' },
+  { en: 'Creators', as: 'সৃষ্টিকৰ্তা', href: '/contribute#designers-visual-creators' },
+  { en: 'Lifelong Learners', as: 'আজীৱন শিক্ষাৰ্থী', href: '/contribute#students-beginners' },
+];
 ---
 
 <BaseLayout
@@ -175,19 +190,15 @@ const featured = Array.from(postsBySlug.entries())
         <h2 lang-en>No technical background required. AI is here to help.</h2>
         <h2 lang-as>কোনো কাৰিকৰী পটভূমিৰ প্ৰয়োজন নাই। AI সহায় কৰিবলৈ আছে।</h2>
       </div>
-      <div class="audience-cloud">
-        <a href="#" lang-en>Kids</a><a href="#" lang-as>শিশু</a>
-        <a href="#" lang-en>Students</a><a href="#" lang-as>শিক্ষাৰ্থী</a>
-        <a href="#" lang-en>Teachers</a><a href="#" lang-as>শিক্ষক</a>
-        <a href="#" lang-en>Parents</a><a href="#" lang-as>অভিভাৱক</a>
-        <a href="#" lang-en>Developers</a><a href="#" lang-as>ডেভেলপাৰ</a>
-        <a href="#" lang-en>Entrepreneurs</a><a href="#" lang-as>উদ্যোগী</a>
-        <a href="#" lang-en>Freelancers</a><a href="#" lang-as>ফ্ৰীলেন্সাৰ</a>
-        <a href="#" lang-en>Job Seekers</a><a href="#" lang-as>চাকৰি প্ৰাৰ্থী</a>
-        <a href="#" lang-en>Govt. Employees</a><a href="#" lang-as>চৰকাৰী কৰ্মচাৰী</a>
-        <a href="#" lang-en>Small Businesses</a><a href="#" lang-as>ক্ষুদ্ৰ ব্যৱসায়ী</a>
-        <a href="#" lang-en>Creators</a><a href="#" lang-as>সৃষ্টিকৰ্তা</a>
-        <a href="#" lang-en>Lifelong Learners</a><a href="#" lang-as>আজীৱন শিক্ষাৰ্থী</a>
+      <div class="audience-cloud audience-cloud-linked">
+        {
+          audienceLinks.map((item) => (
+            <a href={item.href} class="audience-card reveal">
+              <strong lang-en>{item.en}</strong>
+              <strong lang-as>{item.as}</strong>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
