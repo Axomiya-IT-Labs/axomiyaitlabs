@@ -2614,3 +2614,112 @@ footer {
     transform: none !important;
   }
 }
+
+/* GitHub Embed Box & Code Copy Button Styles */
+.github-embed-card {
+  background: linear-gradient(135deg, #0d1117, #161b22);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  color: #c9d1d9;
+}
+
+.github-embed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+.github-embed-org {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.github-embed-org img {
+  width: 44px;
+  height: 44px;
+  filter: brightness(0) invert(1);
+}
+
+.github-embed-org h3 {
+  font-family: var(--f-body);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.github-embed-org p {
+  font-size: 0.85rem;
+  color: #8b949e;
+  margin: 3px 0 0;
+}
+
+.github-embed-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.github-embed-badge {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  background: rgba(56, 139, 253, 0.15);
+  color: #58a6ff;
+  border: 1px solid rgba(56, 139, 253, 0.3);
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-weight: 600;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy-cmd-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+  font-size: 0.72rem;
+  font-family: var(--f-mono);
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+}
+
+.copy-cmd-btn:hover {
+  background: var(--orange);
+  color: var(--navy-900);
+  border-color: var(--orange);
+  font-weight: 600;
+}
+
+/* Inline hyperlink styling in cards & paragraphs */
+.way-card a,
+.note-card a,
+.section-head p a,
+.join-strip p a {
+  color: var(--blue-700);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s var(--ease);
+}
+
+.way-card a:hover,
+.note-card a:hover,
+.section-head p a:hover,
+.join-strip p a:hover {
+  color: var(--orange);
+}
